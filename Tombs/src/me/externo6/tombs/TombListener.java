@@ -13,9 +13,10 @@ public class TombListener implements Listener{
 	public static Tombs plugin;
 	
 	@EventHandler
+	//Maybe better ways to do this, but it works.
 	public void onPlayerInteract(PlayerInteractEvent event){
 		Player player = event.getPlayer();
-		if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta())
+		if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
 		if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
 		if(player.getItemInHand().getItemMeta().hasLore());
 		if(player.getItemInHand().getItemMeta().getDisplayName().contentEquals("Tomb Artifact"));			
