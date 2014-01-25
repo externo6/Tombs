@@ -29,3 +29,4 @@ public class Cooldowns {
         return expireTime != null ? expireTime - System.currentTimeMillis() : Long.MIN_VALUE;
     }
 }
+

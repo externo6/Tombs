@@ -7,7 +7,6 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -27,9 +26,9 @@ public class Tombs extends JavaPlugin implements Listener {
 	public final Logger logger = Logger.getLogger("minecraft");
 	public static Tombs plugin;
 	public final TombListener pl = new TombListener();
-	static File respawnFile = new File("./plugins/Checkpoint", "Respawns.yml");
+	static File respawnFile = new File("./plugins/Tombs", "Respawns.yml");
     public static FileConfiguration respawns = YamlConfiguration.loadConfiguration(respawnFile);
-	static File checkpointFile = new File("./plugins/Checkpoint", "Checkpoint.yml");
+	static File checkpointFile = new File("./plugins/Tombs", "Checkpoint.yml");
 	public static FileConfiguration checkpoint = YamlConfiguration.loadConfiguration(checkpointFile);
 	  
 	  @EventHandler
@@ -128,19 +127,19 @@ public class Tombs extends JavaPlugin implements Listener {
 	    if (cmd.getName().equalsIgnoreCase("tombs")) {
 	      if (args.length == 0)
 	      {
-	        player.sendMessage(ChatColor.DARK_AQUA + " ---------- " + ChatColor.GOLD + "Tombs " + ChatColor.AQUA + getDescription().getVersion() + ChatColor.GOLD + " by " + ChatColor.AQUA + "micrlink " + ChatColor.DARK_AQUA + "----------");
+	        player.sendMessage(ChatColor.DARK_AQUA + " ---------- " + ChatColor.GOLD + "Tombs " + ChatColor.AQUA + getDescription().getVersion() + ChatColor.GOLD + " by " + ChatColor.AQUA + "externo6 " + ChatColor.DARK_AQUA + "----------");
 	        player.sendMessage(ChatColor.GOLD + "Add: " + ChatColor.GRAY + "Add a checkpoint to your target block.");
 	        player.sendMessage(ChatColor.GOLD + "Remove: " + ChatColor.GRAY + "Remove checkpoint from your target block.");
 	        player.sendMessage(ChatColor.GOLD + "Cancel: " + ChatColor.GRAY + "Removes the Checkpoint");
 	        player.sendMessage(ChatColor.GOLD + "Goto: " + ChatColor.GRAY + "Goto last Checkpoint.");
-	        player.sendMessage(ChatColor.DARK_AQUA + " ------------------------------------------------");
+	        player.sendMessage(ChatColor.DARK_AQUA + " -----------------------------------------------------");
 	      }
 	      else if (args.length == 1)
 	      {
 	        List<String> checkpoints = checkpoint.getStringList("Checkpoints");
 	        if (args[0].equalsIgnoreCase("Add"))
 	        {
-	          if (player.hasPermission("Checkpoint.add"))
+	          if (player.hasPermission("tombs.addcheckpoint"))
 	          {
 	            Block b = player.getTargetBlock(null, 10);
 	            String loc = LocToString(b.getLocation());
@@ -167,7 +166,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	        }
 	        else if ((args[0].equalsIgnoreCase("Remove")) || (args[0].equalsIgnoreCase("rem")))
 	        {
-	          if (player.hasPermission("Checkpoint.remove"))
+	          if (player.hasPermission("tombs.removechecktpoint"))
 	          {
 	            Block b = player.getTargetBlock(null, 10);
 	            String loc = LocToString(b.getLocation());
@@ -194,7 +193,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	        }
 	        else if (args[0].equalsIgnoreCase("Goto"))
 	        {
-	          if (player.hasPermission("Checkpoint.goto"))
+	          if (player.hasPermission("tombs.gotocheckpoint"))
 	          {
 	            if (respawns.getString(player.getName()) != null)
 	            {
@@ -218,7 +217,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	        }
 	        else if (args[0].equalsIgnoreCase("Cancel"))
 	        {
-	          if (player.hasPermission("Checkpoint.cancel"))
+	          if (player.hasPermission("tombs.cancelcheckpoint"))
 	          {
 	            if (respawns.getString(player.getName()) != null)
 	            {

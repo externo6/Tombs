@@ -55,6 +55,7 @@ public class TombListener implements Listener{
 					player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 					player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
 					player.sendMessage(ChatColor.RED + "You Dont have Permission to go there yet...");
+					
 }
 }
 }
