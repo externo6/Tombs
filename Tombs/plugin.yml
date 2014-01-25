@@ -1,5 +1,8 @@
 name: Tombs
 main: me.externo6.tombs.Tombs
-version: 0.7
+version: 1.0
 description: >
              Tomb Enabler
+commands: 
+  tombs:
+    description: Base command for checkpoint.
