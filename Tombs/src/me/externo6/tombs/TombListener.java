@@ -31,7 +31,7 @@ public class TombListener implements Listener{
 		player.sendMessage(ChatColor.AQUA + "You feel an energy build up, then fade away...");
 		}
 		}else{ //if they are in the correct world, they will be teleported to the start of Tomb2
-			if(player.hasPermission(new Permissions().canWarpToTomb2)){
+			if(player.hasPermission("tombs.canwarpto")){
 			if(player.getWorld().getName().equalsIgnoreCase("dun1")){
 			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
 			if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
@@ -43,6 +43,7 @@ public class TombListener implements Listener{
 			player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy");
 			player.sendMessage(ChatColor.GREEN + "You feel an energy build up and transported...");
 			player.teleport(new Location(player.getWorld(), -395.5, 89, 1424.5, 180 , 0));
+			}
 			}
 			}else{
 				if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
@@ -60,8 +61,6 @@ public class TombListener implements Listener{
 }
 }
 }
-	}
-
 
 
 
