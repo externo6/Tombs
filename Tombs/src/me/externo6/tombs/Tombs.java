@@ -35,9 +35,9 @@ public class Tombs extends JavaPlugin implements Listener {
 	  public void onPlayerRespawn(PlayerRespawnEvent event)
 	  {
 	    Player player = event.getPlayer();
-	    if(player.getWorld().getName().equalsIgnoreCase("dun1")){
-	    if (respawns.getString(player.getName()) != null);
-	    
+	    if (respawns.getString(player.getName()) == null);
+	    //if(player.getWorld().getName().equalsIgnoreCase("dun1"));
+	    {
 	      Location loc = getStringLocation(respawns.getString(player.getName()));
 	      event.setRespawnLocation(loc);
 	    }
@@ -132,7 +132,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	        player.sendMessage(ChatColor.GOLD + "Remove: " + ChatColor.GRAY + "Remove checkpoint from your target block.");
 	        player.sendMessage(ChatColor.GOLD + "Cancel: " + ChatColor.GRAY + "Removes the Checkpoint");
 	        player.sendMessage(ChatColor.GOLD + "Goto: " + ChatColor.GRAY + "Goto last Checkpoint.");
-	        player.sendMessage(ChatColor.DARK_AQUA + " -----------------------------------------------------");
+	        player.sendMessage(ChatColor.DARK_AQUA + " ---------------------------------------------");
 	      }
 	      else if (args.length == 1)
 	      {
