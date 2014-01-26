@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -34,14 +35,19 @@ public class Tombs extends JavaPlugin implements Listener {
 	  @EventHandler
 	  public void onPlayerRespawn(PlayerRespawnEvent event)
 	  {
-	    Player player = event.getPlayer();
-	    if (respawns.getString(player.getName()) == null);
-	    //if(player.getWorld().getName().equalsIgnoreCase("dun1"));
+		final Player player = event.getPlayer();
+	    //Player player = event.getPlayer();
+	    if(player.getWorld().getName().equalsIgnoreCase("dun1")){
+	  //  if (respawns.getString(player.getName()) != null)
+	    if(respawns.getString(player.getName()) != null)
 	    {
 	      Location loc = getStringLocation(respawns.getString(player.getName()));
 	      event.setRespawnLocation(loc);
 	    }
 	  }
+	  }
+	  
+
 	  
 	  public String LocToString(Location location)
 	  {
@@ -131,15 +137,15 @@ public class Tombs extends JavaPlugin implements Listener {
 	        player.sendMessage(ChatColor.GOLD + "Add: " + ChatColor.GRAY + "Add a checkpoint to your target block.");
 	        player.sendMessage(ChatColor.GOLD + "Remove: " + ChatColor.GRAY + "Remove checkpoint from your target block.");
 	        player.sendMessage(ChatColor.GOLD + "Cancel: " + ChatColor.GRAY + "Removes the Checkpoint");
-	        player.sendMessage(ChatColor.GOLD + "Goto: " + ChatColor.GRAY + "Goto last Checkpoint.");
-	        player.sendMessage(ChatColor.DARK_AQUA + " ---------------------------------------------");
+	        player.sendMessage(ChatColor.GOLD + "Checkpoint: " + ChatColor.GRAY + "Goto last Checkpoint.");
+	        player.sendMessage(ChatColor.DARK_AQUA + " -----------------------------------------");
 	      }
 	      else if (args.length == 1)
 	      {
 	        List<String> checkpoints = checkpoint.getStringList("Checkpoints");
 	        if (args[0].equalsIgnoreCase("Add"))
 	        {
-	          if (player.hasPermission("tombs.addcheckpoint"))
+	          if (player.hasPermission("tombs.add"))
 	          {
 	            Block b = player.getTargetBlock(null, 10);
 	            String loc = LocToString(b.getLocation());
@@ -166,7 +172,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	        }
 	        else if ((args[0].equalsIgnoreCase("Remove")) || (args[0].equalsIgnoreCase("rem")))
 	        {
-	          if (player.hasPermission("tombs.removechecktpoint"))
+	          if (player.hasPermission("Checkpoint.remove"))
 	          {
 	            Block b = player.getTargetBlock(null, 10);
 	            String loc = LocToString(b.getLocation());
@@ -191,9 +197,9 @@ public class Tombs extends JavaPlugin implements Listener {
 	            player.sendMessage(ChatColor.YELLOW + "You don't have permission to use that command.");
 	          }
 	        }
-	        else if (args[0].equalsIgnoreCase("Goto"))
+	        else if (args[0].equalsIgnoreCase("checkpoint"))
 	        {
-	          if (player.hasPermission("tombs.gotocheckpoint"))
+	          if (player.hasPermission("tombs.checkpoint"))
 	          {
 	            if (respawns.getString(player.getName()) != null)
 	            {
@@ -217,7 +223,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	        }
 	        else if (args[0].equalsIgnoreCase("Cancel"))
 	        {
-	          if (player.hasPermission("tombs.cancelcheckpoint"))
+	          if (player.hasPermission("tombs.cancel"))
 	          {
 	            if (respawns.getString(player.getName()) != null)
 	            {
@@ -227,7 +233,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	              }
 	              else
 	              {
-	                respawns.set(player.getName(), "Spawn");
+	                respawns.set(player.getName(), null);
 	                player.sendMessage(ChatColor.GREEN + "[" + ChatColor.YELLOW + "X" + ChatColor.GREEN + "] Checkpoint deactivated!");
 	              }
 	            }
@@ -261,4 +267,5 @@ public class Tombs extends JavaPlugin implements Listener {
 	    return false;
 	  }
 	}
+
 
