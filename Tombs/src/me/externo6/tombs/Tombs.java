@@ -276,7 +276,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		public void onPlayerInteract(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
 			Player player = event.getPlayer();
 			if(event.getAction()==Action.RIGHT_CLICK_AIR){
-			if (Cooldowns.tryCooldown(player, "1", 5000)) {
+			if (Cooldowns.tryCooldown(player, "1", 15000)) {
 			if(player.getWorld().getName().equalsIgnoreCase("1point7")){
 			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
 			if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
