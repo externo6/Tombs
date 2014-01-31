@@ -273,11 +273,26 @@ public class Tombs extends JavaPlugin implements Listener {
 	    //**Artifact Detection
 	  }
 	  @EventHandler
+		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
+			Player player = event.getPlayer();
+			if((event.getAction()==Action.LEFT_CLICK_AIR) || event.getAction()==Action.LEFT_CLICK_BLOCK){
+			if (Cooldowns.tryCooldown(player, "1", 2000)) {
+			//if(player.getWorld().getName().equalsIgnoreCase("1point7")){ Not Needed?
+			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
+			if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
+			if(player.getItemInHand().getItemMeta().hasLore());
+			if(player.getItemInHand().getItemMeta().getDisplayName().contentEquals("Tomb Artifact"));			
+			player.sendMessage(ChatColor.GOLD + "[" + ChatColor.AQUA + "Tomb Artifact" + ChatColor.GOLD + "]" + ChatColor.YELLOW + " This is a key to Tomb 2. Once Tomb 2 is released, you can right click the artifact to be teleported to the Tomb 2 Entrance." );
+				}
+			}
+		}
+	}
+	  @EventHandler
 		public void onPlayerInteract(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
 			Player player = event.getPlayer();
-			if(event.getAction()==Action.RIGHT_CLICK_AIR){
+			if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
 			if (Cooldowns.tryCooldown(player, "1", 15000)) {
-			if(player.getWorld().getName().equalsIgnoreCase("1point7")){
+			//if(player.getWorld().getName().equalsIgnoreCase("1point7")){ Not needed?
 			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
 			if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
 			if(player.getItemInHand().getItemMeta().hasLore());
@@ -287,7 +302,8 @@ public class Tombs extends JavaPlugin implements Listener {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 			player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
 			player.sendMessage(ChatColor.AQUA + "You feel an energy build up, then fade away...");
-			player.setVelocity(new Vector(0,1,0));
+			player.sendMessage(ChatColor.RED + "You must be in the Tomb world to feel the full effect!");
+			player.setVelocity(new Vector(0,0.5,0));
 			}
 			}else{ //if they are in the correct world, they will be teleported to the start of Tomb2
 				if(player.hasPermission("tombs.canwarpto")){
@@ -318,7 +334,6 @@ public class Tombs extends JavaPlugin implements Listener {
 						player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
 						player.sendMessage(ChatColor.RED + "You Dont have Permission to go there yet...");
 						
-	}
 	}
 	}
 	}
