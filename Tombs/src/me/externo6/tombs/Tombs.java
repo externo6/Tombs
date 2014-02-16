@@ -313,12 +313,12 @@ public class Tombs extends JavaPlugin implements Listener {
 		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
 			Player player = event.getPlayer();
 			if((event.getAction()==Action.LEFT_CLICK_AIR) || event.getAction()==Action.LEFT_CLICK_BLOCK){
-			if (Cooldowns.tryCooldown(player, "2", 2000)) {
 			//if(player.getWorld().getName().equalsIgnoreCase("1point7")){ Not Needed?
-			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-			if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
-			if(player.getItemInHand().getItemMeta().hasLore());
-			if(player.getItemInHand().getItemMeta().getDisplayName().contentEquals("Tomb Artifact"));			
+			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
+			if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+					&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
+						&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
+			if (Cooldowns.tryCooldown(player, "2", 2000)){
 			player.sendMessage(ChatColor.GOLD + "[" + ChatColor.AQUA + "Tomb Artifact" + ChatColor.GOLD + "]" + ChatColor.YELLOW + " This is a key to Tomb 2. Once Tomb 2 is released, right clicking will teleport you to Tomb 2." );
 				}
 			}
@@ -329,12 +329,12 @@ public class Tombs extends JavaPlugin implements Listener {
 			Player player = event.getPlayer();
 			Location loc = player.getLocation();
 			if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
-			if (Cooldowns.tryCooldown(player, "1", 15000)) {
 			if(player.getWorld().getName().equalsIgnoreCase("1point7")){
-			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-			if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
-			if(player.getItemInHand().getItemMeta().hasLore());
-			if(player.getItemInHand().getItemMeta().getDisplayName().contentEquals("Tomb Artifact"));			
+			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
+			if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+					&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
+						&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
+			if (Cooldowns.tryCooldown(player, "1", 15000)) {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 150, 1));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
@@ -344,13 +344,15 @@ public class Tombs extends JavaPlugin implements Listener {
 			player.setVelocity(new Vector(0,0.5,0));
 			player.playSound(loc, Sound.VILLAGER_NO, 1, 1);
 			}
-			}else{ //if they are in the correct world, they will be teleported to the start of Tomb2
-				if(player.hasPermission("tombs.tomb2")){
-				if(player.getWorld().getName().equalsIgnoreCase("dun1")){
-				if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-				if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
-				if(player.getItemInHand().getItemMeta().hasLore());
-				if(player.getItemInHand().getItemMeta().getDisplayName().contentEquals("Tomb Artifact"));			
+		}
+		}else{ //if they are in the correct world, they will be teleported to the start of Tomb2
+			if(player.hasPermission("tombs.tomb2")){
+					if(player.getWorld().getName().equalsIgnoreCase("dun1")){
+						if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
+						if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+								&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
+									&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
+				if (Cooldowns.tryCooldown(player, "1", 15000)) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 180, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
@@ -362,24 +364,26 @@ public class Tombs extends JavaPlugin implements Listener {
 				delay(player);
 				ouch(player);
 				}
-				}
+			}
+					}
 				}else{
-					if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-						if (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)){
-						if(player.getItemInHand().getItemMeta().hasLore());
-						if(player.getItemInHand().getItemMeta().getDisplayName().contentEquals("Tomb Artifact"));			
+					if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
+						if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+								&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
+									&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
+							if (Cooldowns.tryCooldown(player, "1", 15000)) {
 						player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 150, 1));
 						player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
 						player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 						player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
-						player.sendMessage(ChatColor.RED + "You Dont have Permission to go there yet...");
-						
-	}
-	}
-	}
-	}
-	}
-	  }
+						player.sendMessage(ChatColor.RED + "You Dont have Permission to go there yet...");			
+							}
+						}
+					}
+				}
+			}
+			}
+
 		public void delay (final Player player){	
 			getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				  public void run() {
