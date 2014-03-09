@@ -16,13 +16,18 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Vehicle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.vehicle.VehicleDestroyEvent;
+import org.bukkit.event.vehicle.VehicleExitEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,14 +43,37 @@ public class Tombs extends JavaPlugin implements Listener {
 	static File checkpointFile = new File("./plugins/Tombs", "Checkpoint.yml");
 	public static FileConfiguration checkpoint = YamlConfiguration.loadConfiguration(checkpointFile);
 	
+	private static Vehicle vehicle = null;
+	@EventHandler
+	public void onVehicleExit(VehicleExitEvent event){
+//	if(vehicle.getWorld().getName().equalsIgnoreCase("world")){
+	  if ((event.getVehicle() instanceof Minecart))
+	  {
+	    vehicle = event.getVehicle();
+	    Location loc = vehicle.getLocation();
+	    vehicle.remove();
+	    loc.getWorld().dropItem(loc, new ItemStack(Material.MINECART, 1));
+	  }
+//	}
+}
+
+	@EventHandler
+	public void onVehicleDestroy(VehicleDestroyEvent event)
+	{
+	  if (vehicle.equals(event.getVehicle())) {
+	    event.setCancelled(true);
+	  }
+	}
+
+	
 	@EventHandler
 	public void onWorldChange(PlayerChangedWorldEvent event){
-		Player player1 = event.getPlayer();
-	 if(player1.getWorld().getName().equalsIgnoreCase("1point7")){
-	  player1.removePotionEffect(PotionEffectType.JUMP);
-	  player1.removePotionEffect(PotionEffectType.BLINDNESS);
-	  player1.removePotionEffect(PotionEffectType.CONFUSION);
-	  player1.removePotionEffect(PotionEffectType.WITHER);
+		Player player = event.getPlayer();
+	 if(player.getWorld().getName().equalsIgnoreCase("1point7")){
+	  player.removePotionEffect(PotionEffectType.JUMP);
+	  player.removePotionEffect(PotionEffectType.BLINDNESS);
+	  player.removePotionEffect(PotionEffectType.CONFUSION);
+	  player.removePotionEffect(PotionEffectType.WITHER);
 	}
 }
 	//**Should Really be in another thread?
@@ -356,6 +384,8 @@ public class Tombs extends JavaPlugin implements Listener {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 180, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
+				//player.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 110, 9));
+				player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 120, 100));
 				player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy");
 				player.sendMessage(ChatColor.GREEN + "You feel an energy build up and flung into the air!");
 				player.playSound(loc, Sound.VILLAGER_YES, 1, 1);
@@ -420,5 +450,4 @@ public class Tombs extends JavaPlugin implements Listener {
 			}, 110L);
 			}
 	}
-
 
