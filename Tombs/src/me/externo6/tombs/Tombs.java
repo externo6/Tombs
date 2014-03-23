@@ -46,7 +46,6 @@ public class Tombs extends JavaPlugin implements Listener {
 	private static Vehicle vehicle = null;
 	@EventHandler
 	public void onVehicleExit(VehicleExitEvent event){
-//	if(vehicle.getWorld().getName().equalsIgnoreCase("world")){
 	  if ((event.getVehicle() instanceof Minecart))
 	  {
 	    vehicle = event.getVehicle();
@@ -54,17 +53,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	    vehicle.remove();
 	    loc.getWorld().dropItem(loc, new ItemStack(Material.MINECART, 1));
 	  }
-//	}
 }
-
-	@EventHandler
-	public void onVehicleDestroy(VehicleDestroyEvent event)
-	{
-	  if (vehicle.equals(event.getVehicle())) {
-	    event.setCancelled(true);
-	  }
-	}
-
 	
 	@EventHandler
 	public void onWorldChange(PlayerChangedWorldEvent event){
@@ -365,7 +354,7 @@ public class Tombs extends JavaPlugin implements Listener {
 			if (Cooldowns.tryCooldown(player, "1", 15000)) {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 150, 1));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
-			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
+			//player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 			player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
 			player.sendMessage(ChatColor.AQUA + "You feel an energy build up, then fade away...");
 			player.sendMessage(ChatColor.RED + "You must be in the Tomb world to feel the full effect!");
@@ -383,7 +372,7 @@ public class Tombs extends JavaPlugin implements Listener {
 				if (Cooldowns.tryCooldown(player, "1", 15000)) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 180, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
-				player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
+				//player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 				//player.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 110, 9));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 120, 100));
 				player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy");
@@ -404,7 +393,7 @@ public class Tombs extends JavaPlugin implements Listener {
 							if (Cooldowns.tryCooldown(player, "1", 15000)) {
 						player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 150, 1));
 						player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
-						player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
+						//player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 						player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
 						player.sendMessage(ChatColor.RED + "You Dont have Permission to go there yet...");			
 							}
