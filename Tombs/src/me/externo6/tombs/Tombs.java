@@ -63,8 +63,10 @@ public class Tombs extends JavaPlugin implements Listener {
 	  player.removePotionEffect(PotionEffectType.BLINDNESS);
 	  player.removePotionEffect(PotionEffectType.CONFUSION);
 	  player.removePotionEffect(PotionEffectType.WITHER);
+	  player.removePotionEffect(PotionEffectType.SLOW);
 	}
 }
+	
 	//**Should Really be in another thread?
 	  @EventHandler
 	  public void onPlayerRespawn(PlayerRespawnEvent event)
@@ -267,14 +269,15 @@ public class Tombs extends JavaPlugin implements Listener {
 	        		  player.removePotionEffect(PotionEffectType.JUMP);
 	        		  player.removePotionEffect(PotionEffectType.BLINDNESS);
 	        		  player.removePotionEffect(PotionEffectType.CONFUSION);
-	        		  player.removePotionEffect(PotionEffectType.WITHER);	
+	        		  player.removePotionEffect(PotionEffectType.WITHER);
+	        		  player.removePotionEffect(PotionEffectType.SLOW);
 	        		  player.sendMessage(ChatColor.GREEN + "Effects Removed!");
 	        	}
 	        		 else
 	       		 {
 	        		player.sendMessage(ChatColor.RED + "You can only do this in the Tomb World!");	 
 	       }
-	        		 }
+	        	 }
 	        	else {
 		            player.sendMessage(ChatColor.YELLOW + "You don't have permission to use that command.");
 	        	}
@@ -324,6 +327,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	    }
 	    
 	    return false;
+	    
 	    //**Artifact Detection
 	  }
 	  @EventHandler
@@ -402,6 +406,7 @@ public class Tombs extends JavaPlugin implements Listener {
 				}
 			}
 			}
+	  
 
 		public void delay (final Player player){	
 			getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
