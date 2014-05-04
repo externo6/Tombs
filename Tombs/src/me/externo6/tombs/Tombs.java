@@ -12,6 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.Sign;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -65,8 +66,39 @@ public class Tombs extends JavaPlugin implements Listener {
 	  player.removePotionEffect(PotionEffectType.SLOW);
 	}
 }
+	@EventHandler
+	public void onWorldChange1(PlayerChangedWorldEvent event){
+		Player player = event.getPlayer();
+	 if(player.getWorld().getName().equalsIgnoreCase("dun1")){
+		 //if (respawns.getString(player.getName()).equalsIgnoreCase("spawn"))
+           respawns.set(player.getName(), null);
+         //  player.sendMessage(ChatColor.GREEN + "[" + ChatColor.YELLOW + "X" + ChatColor.GREEN + "] Checkpoint deactivated!");
+         }
+       }  
+
 	
-	//**Should Really be in another thread?
+	//Sign Listener
+	Player player = null;
+	@EventHandler
+	public void onPlayerInteract(PlayerInteractEvent event)
+	{	
+	  if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK)){
+	    Block block = event.getClickedBlock();
+	    if (block.getType() == Material.WALL_SIGN){
+	      Sign sign = (Sign)block.getState();
+	      Player player = event.getPlayer();
+	      if ((sign.getLine(0).equals("[]")) 
+	    		  && (sign.getLine(1).equals("<>")) 
+	    		  	&& (sign.getLine(2).equals(":")) 
+	    		  		&& (sign.getLine(3).equals("-")))
+	    	  if (player.hasPermission("tombs.signjump")) {
+	    	  player.setVelocity(new Vector(0,3,0));
+	          }
+	    }
+	  }
+  }
+	 
+	//Checkpoints
 	  @EventHandler
 	  public void onPlayerRespawn(PlayerRespawnEvent event)
 	  {
@@ -80,8 +112,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	      event.setRespawnLocation(loc);
 	    }
 	  }
-	  }
-	  
+	}
 	  public String LocToString(Location location)
 	  {
 	    int x = (int)location.getX();
@@ -148,8 +179,6 @@ public class Tombs extends JavaPlugin implements Listener {
 		PluginManager pm = getServer().getPluginManager();
 		getServer().getPluginManager().registerEvents(this, this);	
 	}
-	
-
 	  
 	  public Location getStringLocation(String string)
 	  {
@@ -161,6 +190,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	    World w = getServer().getWorld(world);
 	    return new Location(w, x, y, z);
 	  }
+	  
 	  
 	  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	  {
@@ -285,9 +315,9 @@ public class Tombs extends JavaPlugin implements Listener {
 	        {
 	          if (player.hasPermission("tombs.cancel"))
 	          {
-	            if (respawns.getString(player.getName()) != null)
+	            if (respawns.getString(player.getName()) != null) 
 	            {
-	              if (respawns.getString(player.getName()).equalsIgnoreCase("spawn"))
+	              if (respawns.getString(player.getName()).equalsIgnoreCase("spawn")) //|| (player.getWorld().getName().equalsIgnoreCase("dun1")))
 	              {
 	                player.sendMessage(ChatColor.YELLOW + "No Checkpoint Activated!");
 	              }
@@ -324,7 +354,6 @@ public class Tombs extends JavaPlugin implements Listener {
 	        player.sendMessage(ChatColor.RED + "Invalid Syntax");
 	      }
 	    }
-	    
 	    return false;
 	    
 	    //**Artifact Detection
@@ -345,7 +374,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		}
 	}
 	  @EventHandler
-		public void onPlayerInteract(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
+		public void onPlayerInteract3(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
 			Player player = event.getPlayer();
 			Location loc = player.getLocation();
 			if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
