@@ -91,12 +91,33 @@ public class Tombs extends JavaPlugin implements Listener {
 	    		  && (sign.getLine(1).equals("<>")) 
 	    		  	&& (sign.getLine(2).equals(":")) 
 	    		  		&& (sign.getLine(3).equals("-")))
-	    	  if (player.hasPermission("tombs.signjump")) {
+	    	  if ((player.hasPermission("tombs.signjump")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) {
 	    	  player.setVelocity(new Vector(0,3,0));
 	          }
 	    }
 	  }
   }
+	
+	@EventHandler
+	public void onPlayerInteract4(PlayerInteractEvent event)
+	{
+		if (event.getAction() == Action.RIGHT_CLICK_BLOCK){
+			Block block = event.getClickedBlock();
+			if (block.getType() == Material.WALL_SIGN){
+				Sign sign = (Sign)block.getState();
+				Player player = event.getPlayer();
+				if ((sign.getLine(0).equals(ChatColor.DARK_BLUE + "Tomb")) && (sign.getLine(1).equals("Armour")))
+					if ((player.hasPermission("tombs.armour")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) {
+						player.getInventory().clear();
+						player.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET, 1));
+						player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE, 1));
+						player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS, 1));
+						player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS, 1));
+						player.getInventory().setItemInHand(new ItemStack(Material.IRON_SWORD, 1));
+					}
+			}
+		}
+	}
 	 
 	//Checkpoints
 	  @EventHandler
