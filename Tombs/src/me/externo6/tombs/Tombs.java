@@ -391,15 +391,17 @@ public class Tombs extends JavaPlugin implements Listener {
           Player player = event.getPlayer();
           //Location loc = player.getLocation();
           if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
-              if((player.getWorld().getName().equalsIgnoreCase("world")) ||
+              if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
                       (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
               if((player.getItemInHand().hasItemMeta())
                   && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Jump"))
                       && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                           && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))){
                       if(player.getLevel()>=3){
                           if (Cooldowns.tryCooldown(player, "3", 20000)){
                               player.setLevel(player.getLevel() - 3);
+                              player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 3 Experience Levels used. Charging...");
                                   player.getWorld().playSound(player.getLocation(), Sound.PORTAL_TRIGGER, 1, 1);
                                   //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
                                       tomb2powerup(player);
@@ -525,7 +527,7 @@ public class Tombs extends JavaPlugin implements Listener {
             getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
                   public void run() {
                       //Location loc = player.getLocation();
-                      player.sendMessage("Woah!");
+                      player.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "Me" + ChatColor.GOLD + "]" + ChatColor.WHITE + ":" + ChatColor.GREEN + " Woah!");
                         player.setVelocity(new Vector(0,1.25,0));   
                         player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_LARGE, 0);
                         player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
