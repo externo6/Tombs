@@ -384,10 +384,41 @@ public class Tombs extends JavaPlugin implements Listener {
 	    }
 	    return false;
 	  }
-	  
-      //**TOMB2 DETECTION
+	  //** Tomb2 Sign Detection
+		@EventHandler
+		public void onPlayerInteract9(PlayerInteractEvent event)
+		{	
+		  if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK)){
+		    Block block = event.getClickedBlock();
+		    if (block.getType() == Material.WALL_SIGN){
+		      Sign sign = (Sign)block.getState();
+		      Player player = event.getPlayer();
+		      if ((sign.getLine(0).equals("Tomb Essence")) 
+		    		  && (sign.getLine(1).equals("Purify with:")) 
+		    		  	&& (sign.getLine(2).equals(ChatColor.WHITE + "Jump")));
+		    	  if ((player.hasPermission("tombs.essencejump")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) {
+		          }
+		    }
+		  }
+	  }
+      //**Tomb2 Essence DETECTION
+	    @EventHandler
+    	public void onPlayerInteract5(PlayerInteractEvent event){
+        Player player = event.getPlayer();
+        if((event.getAction()==Action.RIGHT_CLICK_AIR) || (event.getAction()==Action.RIGHT_CLICK_BLOCK) || (event.getAction()==Action.LEFT_CLICK_AIR) || (event.getAction()==Action.LEFT_CLICK_BLOCK)){
+            if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
+                    (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
+            if((player.getItemInHand().hasItemMeta())
+                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))){
+            	player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " This Essence has not been infused yet!");
+            }
+          }
+        }
+    }
     @EventHandler
-      public void onPlayerInteract5(PlayerInteractEvent event){
+      public void onPlayerInteract6(PlayerInteractEvent event){
           Player player = event.getPlayer();
           //Location loc = player.getLocation();
           if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
@@ -404,40 +435,96 @@ public class Tombs extends JavaPlugin implements Listener {
                               player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 3 Experience Levels used. Charging...");
                                   player.getWorld().playSound(player.getLocation(), Sound.PORTAL_TRIGGER, 1, 1);
                                   //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
-                                      tomb2powerup(player);
+                                      tomb2powerupjump(player);
+                        }else{
+                      	  if (Cooldowns.tryCooldown(player, "4", 4000)){
+                      	  player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.BLUE + " On Cooldown!");
                         }
                       }
+                     }
                       else{
                           player.sendMessage(ChatColor.RED + "Not enough Experience!");
-                  }
-                  }
-      }
+                      }
+              		}
+              	}
               }
           }
     @EventHandler
-    	public void onPlayerInteract6(PlayerInteractEvent event){
+    public void onPlayerInteract7(PlayerInteractEvent event){
         Player player = event.getPlayer();
-        if((event.getAction()==Action.RIGHT_CLICK_AIR) || (event.getAction()==Action.RIGHT_CLICK_BLOCK) || (event.getAction()==Action.LEFT_CLICK_AIR) || (event.getAction()==Action.LEFT_CLICK_BLOCK)){
+        //Location loc = player.getLocation();
+        if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
             if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
                     (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
             if((player.getItemInHand().hasItemMeta())
                 && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Speed"))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))){
-            	player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " This Essence has not been infused yet!");
+                    if(player.getLevel()>=5){
+                        if (Cooldowns.tryCooldown(player, "3", 40000)){
+                            player.setLevel(player.getLevel() - 5);
+                            player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Speed Given.");
+                                player.getWorld().playSound(player.getLocation(), Sound.HORSE_GALLOP, 1, 1);
+                                //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 150, 1));
+                                
+                      }else{
+                    	  if (Cooldowns.tryCooldown(player, "4", 4000)){
+                    	  player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.BLUE + " On Cooldown!");
+                      }
+                    }
+                   }
+                    else{
+                        player.sendMessage(ChatColor.RED + "Not enough Experience!");
+                    	}
+                	}
+            	}
             }
-          }
-        }
+    	}
+    @EventHandler
+    public void onPlayerInteract8(PlayerInteractEvent event){
+        Player player = event.getPlayer();
+        //Location loc = player.getLocation();
+        if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
+            if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
+                    (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
+            if((player.getItemInHand().hasItemMeta())
+                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Invisibility"))
+                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))){
+                    if(player.getLevel()>=20){
+                        if (Cooldowns.tryCooldown(player, "3", 80000)){
+                            player.setLevel(player.getLevel() - 20);
+                            player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 20 Experience Levels used. Invisibility Given.");
+                                player.getWorld().playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
+                                //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 400, 1));
+                                
+                      }else{
+                    	  if (Cooldowns.tryCooldown(player, "4", 4000)){
+                    	  player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.BLUE + " On Cooldown!");
+                      }
+                    }
+                   }
+                    else{
+                        player.sendMessage(ChatColor.RED + "Not enough Experience!");
+                }
+                }
     }
+            }
+        }
 	    //**Artifact Detection
 	  @EventHandler
 		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
 			Player player = event.getPlayer();
 			if((event.getAction()==Action.LEFT_CLICK_AIR) || event.getAction()==Action.LEFT_CLICK_BLOCK){
 			if((player.getItemInHand().hasItemMeta())
-				&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+				&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+					&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))
 					&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
-						&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
+){
 			if (Cooldowns.tryCooldown(player, "2", 2000)){
 			player.sendMessage(ChatColor.GOLD + "[" + ChatColor.AQUA + "Tomb Artifact" + ChatColor.GOLD + "]" + ChatColor.YELLOW + " This is a key to Tomb 2. Once Tomb 2 is released, right clicking will teleport you to Tomb 2." );
 				}
@@ -538,7 +625,7 @@ public class Tombs extends JavaPlugin implements Listener {
 				  }
 			}, 110L);
 			}
-        public void tomb2powerup (final Player player){
+        public void tomb2powerupjump (final Player player){
             getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
                   public void run() {
                       //Location loc = player.getLocation();
