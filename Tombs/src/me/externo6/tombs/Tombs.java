@@ -414,6 +414,21 @@ public class Tombs extends JavaPlugin implements Listener {
       }
               }
           }
+    @EventHandler
+    	public void onPlayerInteract6(PlayerInteractEvent event){
+        Player player = event.getPlayer();
+        if((event.getAction()==Action.RIGHT_CLICK_AIR) || (event.getAction()==Action.RIGHT_CLICK_BLOCK) || (event.getAction()==Action.LEFT_CLICK_AIR) || (event.getAction()==Action.LEFT_CLICK_BLOCK)){
+            if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
+                    (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
+            if((player.getItemInHand().hasItemMeta())
+                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))){
+            	player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " This Essence has not been infused yet!");
+            }
+          }
+        }
+    }
 	    //**Artifact Detection
 	  @EventHandler
 		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
