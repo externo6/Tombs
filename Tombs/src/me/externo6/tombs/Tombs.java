@@ -3,6 +3,7 @@ package me.externo6.tombs;
 import java.util.logging.Logger;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -28,6 +29,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -106,6 +108,11 @@ public class Tombs extends JavaPlugin implements Listener {
 			if (block.getType() == Material.WALL_SIGN){
 				Sign sign = (Sign)block.getState();
 				Player player = event.getPlayer();
+				String[] lores = {"Not for Sale"};
+				ItemStack sword = new ItemStack(Material.IRON_SWORD, 1);
+				ItemMeta meta = sword.getItemMeta();
+				meta.setLore(Arrays.asList(lores));
+				sword.setItemMeta(meta);
 				if ((sign.getLine(0).equals(ChatColor.DARK_BLUE + "Tomb")) && (sign.getLine(1).equals("Armour")))
 					if ((player.hasPermission("tombs.armour")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) {
 						player.getInventory().clear();
@@ -113,7 +120,7 @@ public class Tombs extends JavaPlugin implements Listener {
 						player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE, 1));
 						player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS, 1));
 						player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS, 1));
-						player.getInventory().setItemInHand(new ItemStack(Material.IRON_SWORD, 1));
+						player.getInventory().setItemInHand(sword);
 					}
 			}
 		}
@@ -383,9 +390,8 @@ public class Tombs extends JavaPlugin implements Listener {
 		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
 			Player player = event.getPlayer();
 			if((event.getAction()==Action.LEFT_CLICK_AIR) || event.getAction()==Action.LEFT_CLICK_BLOCK){
-			//if(player.getWorld().getName().equalsIgnoreCase("1point7")){ Not Needed?
-			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-			if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+			if((player.getItemInHand().hasItemMeta())
+				&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
 					&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
 						&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
 			if (Cooldowns.tryCooldown(player, "2", 2000)){
@@ -395,19 +401,18 @@ public class Tombs extends JavaPlugin implements Listener {
 		}
 	}
 	  @EventHandler
-		public void onPlayerInteract3(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
+		public void onPlayerInteract3(PlayerInteractEvent event){
 			Player player = event.getPlayer();
 			Location loc = player.getLocation();
 			if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
 			if(player.getWorld().getName().equalsIgnoreCase("1point7")){
-			if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-			if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+			if((player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
+				&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
 					&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
 						&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
 			if (Cooldowns.tryCooldown(player, "1", 15000)) {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 150, 1));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
-			//player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 			player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
 			player.sendMessage(ChatColor.AQUA + "You feel an energy build up, then fade away...");
 			player.sendMessage(ChatColor.RED + "You must be in the Tomb world to feel the full effect!");
@@ -418,15 +423,13 @@ public class Tombs extends JavaPlugin implements Listener {
 		}else{ //if they are in the correct world, they will be teleported to the start of Tomb2
 			if(player.hasPermission("tombs.tomb2")){
 					if(player.getWorld().getName().equalsIgnoreCase("dun1")){
-						if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-						if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+						if((player.getItemInHand().hasItemMeta())
+							&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
 								&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
 									&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
 				if (Cooldowns.tryCooldown(player, "1", 15000)) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 180, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
-				//player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
-				//player.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 110, 9));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 120, 100));
 				player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy");
 				player.sendMessage(ChatColor.GREEN + "You feel an energy build up and flung into the air!");
@@ -437,16 +440,15 @@ public class Tombs extends JavaPlugin implements Listener {
 				ouch(player);
 				}
 			}
-					}
+		}
 				}else{
-					if(player.getItemInHand() != null && player.getItemInHand().hasItemMeta()); //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
-						if ((event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+					if((player.getItemInHand().hasItemMeta())
+							&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
 								&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event")) 
 									&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Artifact"))){
 							if (Cooldowns.tryCooldown(player, "1", 15000)) {
 						player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 150, 1));
 						player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
-						//player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 500, 1));
 						player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy!");
 						player.sendMessage(ChatColor.RED + "You Dont have Permission to go there yet...");			
 							}
@@ -454,7 +456,7 @@ public class Tombs extends JavaPlugin implements Listener {
 					}
 				}
 			}
-			}
+		}
 	  
 
 		public void delay (final Player player){	
