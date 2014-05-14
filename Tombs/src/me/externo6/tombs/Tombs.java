@@ -383,9 +383,36 @@ public class Tombs extends JavaPlugin implements Listener {
 	      }
 	    }
 	    return false;
-	    
-	    //**Artifact Detection
 	  }
+	  
+      //**TOMB2 DETECTION
+    @EventHandler
+      public void onPlayerInteract5(PlayerInteractEvent event){
+          Player player = event.getPlayer();
+          //Location loc = player.getLocation();
+          if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK){
+              if((player.getWorld().getName().equalsIgnoreCase("world")) ||
+                      (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
+              if((player.getItemInHand().hasItemMeta())
+                  && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                      && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))){
+                      if(player.getLevel()>=3){
+                          if (Cooldowns.tryCooldown(player, "3", 20000)){
+                              player.setLevel(player.getLevel() - 3);
+                                  player.getWorld().playSound(player.getLocation(), Sound.PORTAL_TRIGGER, 1, 1);
+                                  //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
+                                      tomb2powerup(player);
+                        }
+                      }
+                      else{
+                          player.sendMessage(ChatColor.RED + "Not enough Experience!");
+                  }
+                  }
+      }
+              }
+          }
+	    //**Artifact Detection
 	  @EventHandler
 		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
 			Player player = event.getPlayer();
@@ -494,5 +521,16 @@ public class Tombs extends JavaPlugin implements Listener {
 				  }
 			}, 110L);
 			}
+        public void tomb2powerup (final Player player){
+            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+                  public void run() {
+                      //Location loc = player.getLocation();
+                      player.sendMessage("Woah!");
+                        player.setVelocity(new Vector(0,1.25,0));   
+                        player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_LARGE, 0);
+                        player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                  }
+            }, 80L);
+            }
 	}
 
