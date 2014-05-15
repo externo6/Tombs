@@ -423,17 +423,16 @@ public class Tombs extends JavaPlugin implements Listener {
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
 		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump");
-
+				  	      try
+					        {
+					          essence.save(essenceFile);
+					        }
+					        catch (IOException e)
+					        {
+					          e.printStackTrace();
+				    }
 		    		  }
 		          }
-		  	        try
-			        {
-			          essence.save(essenceFile);
-			        }
-			        catch (IOException e)
-			        {
-			          e.printStackTrace();
-		    }
 		  }
 	  }
 		    }
