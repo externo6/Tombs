@@ -410,7 +410,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))){
-			  	  	if ((essence.getString(player.getName()).equalsIgnoreCase("jump"))){
+			  	  	if (essence.getString(player.getName()).equalsIgnoreCase("jump")){
 			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump");
 		    	}else{
 		    		essence.set(player.getName(), "Jump");
