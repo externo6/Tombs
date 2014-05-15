@@ -77,6 +77,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	 if(player.getWorld().getName().equalsIgnoreCase("dun1")){
 		 //if (respawns.getString(player.getName()).equalsIgnoreCase("spawn"))
            respawns.set(player.getName(), null);
+           essence.set(player.getName(), "None");
          //  player.sendMessage(ChatColor.GREEN + "[" + ChatColor.YELLOW + "X" + ChatColor.GREEN + "] Checkpoint deactivated!");
          }
        }  
@@ -387,7 +388,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	    }
 	    return false;
 	  }
-	  //** Tomb2 Sign Detection
+	  //** Tomb2 Sign Detection	  
 		@EventHandler
 		public void onPlayerInteract9(PlayerInteractEvent event)
 		{	
@@ -409,7 +410,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))){
-			  	  	if (essence.getString(player.getName()).equalsIgnoreCase("jump")){
+			  	  	if ((essence.getString(player.getName()).equalsIgnoreCase("jump"))){
 			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump");
 		    	}else{
 		    		essence.set(player.getName(), "Jump");
@@ -470,7 +471,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))){
-		    			  if (essence.getString(player.getName()).equalsIgnoreCase("jump")){
+		  		    	if (essence.getString(player.getName()).equalsIgnoreCase("speed")){
 				    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Speed");
 				    	}else{
 				    		essence.set(player.getName(), "Speed");
@@ -530,7 +531,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))){
-		    			  if (!essence.getString(player.getName()).equalsIgnoreCase("jump")){
+					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("invisibility")){
 					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Invisibility");
 					    	}else{
 					    		essence.set(player.getName(), "Invisibility");
