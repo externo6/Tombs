@@ -472,23 +472,11 @@ public class Tombs extends JavaPlugin implements Listener {
 					        }
 		    			}
 		    		  }
-		    		  else
-		    		  {
-			    		  if((player.getItemInHand().hasItemMeta())
-	                                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-	                                  	&& (!player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName() ==null))
-	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
-			    		  {
-			    			  player.sendMessage(ChatColor.DARK_RED + "That Essence is not bound to you!");		  
-		    	  }
-		      }
 		    }
 		  }
 		    }
 		  }
 		}
-	
 		@EventHandler
 		public void onPlayerInteract10(PlayerInteractEvent event)
 		{	
@@ -540,17 +528,6 @@ public class Tombs extends JavaPlugin implements Listener {
 					          e.printStackTrace();
 				        }
 	    			}	
-	    			}
-		    		  else
-		    		  {
-			    		  if((player.getItemInHand().hasItemMeta())
-			    	                                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-			    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-			    	                                  	&& (!player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName() ==null))
-			    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
-			    		  {
-			    			  player.sendMessage(ChatColor.DARK_RED + "That Essence is not bound to you!");
-	    				}
 	    		  }
 	    	  }
 	      }
@@ -608,34 +585,25 @@ public class Tombs extends JavaPlugin implements Listener {
 					          e.printStackTrace();
 					        }
 			    			}
-			    		  }
-		    		  else
-		    		  {
-				    		  if((player.getItemInHand().hasItemMeta())
-  	                                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-  	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-  	                                  	&& (!player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName() ==null))
-  	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
-				    		  {
-  			  player.sendMessage(ChatColor.DARK_RED + "That Essence is not bound to you!");
-			}
-	  }
-}
-}
-}
-}
-}
+		    		  }
+		    	  }
+		      }
+		    }
+		  }
+		}
       //**Tomb2 Essence DETECTION
 	    @EventHandler
     	public void onPlayerInteract5(PlayerInteractEvent event)
 	    {
         Player player = event.getPlayer();
+        Block block = event.getClickedBlock();
         if((event.getAction()==Action.RIGHT_CLICK_AIR) 
         		|| (event.getAction()==Action.RIGHT_CLICK_BLOCK) 
         			|| (event.getAction()==Action.LEFT_CLICK_AIR) 
-        				|| (event.getAction()==Action.LEFT_CLICK_BLOCK)){
-            if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
-                    (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
+        				|| (event.getAction()==Action.LEFT_CLICK_BLOCK)
+        					|| (block.getType() == Material.WALL_SIGN)) {
+          //  if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
+            //        (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
             if((player.getItemInHand().hasItemMeta())
                 && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
@@ -645,7 +613,31 @@ public class Tombs extends JavaPlugin implements Listener {
             }
           }
         }
-    }
+ //   }
+	    @EventHandler
+    	public void onPlayerInteract15(PlayerInteractEvent event)
+	    {
+        Player player = event.getPlayer();
+        if((event.getAction()==Action.RIGHT_CLICK_AIR) 
+        		|| (event.getAction()==Action.RIGHT_CLICK_BLOCK) 
+        			|| (event.getAction()==Action.LEFT_CLICK_AIR) 
+        				|| (event.getAction()==Action.LEFT_CLICK_BLOCK)){
+        //    if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
+        //            (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
+            if((player.getItemInHand().hasItemMeta())
+                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                    && (!player.getItemInHand().getItemMeta().getLore().contains((ChatColor.GRAY + "Bound to: " + player.getName())))
+                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
+            {
+            	player.sendMessage(ChatColor.DARK_RED +"This Essence is not bound to you!");
+            	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
+            	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
+            	tomb2essenceremoval(player);
+            }
+          }
+        }
+   // }
     @EventHandler
       public void onPlayerInteract6(PlayerInteractEvent event)
     {
@@ -778,20 +770,6 @@ public class Tombs extends JavaPlugin implements Listener {
     }
             }
         }
-    @EventHandler
-    public void onPlayerInteract15(PlayerInteractEvent event)
-    {
-		  if((player.getItemInHand().hasItemMeta())
-                  && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-                    	&& (!player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName() ==null))
-                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
-		  {
-			  player.sendMessage(ChatColor.DARK_RED + "That Essence is not bound to you!");
-			  player.sendMessage(ChatColor.GREEN + "The Essence is getting rarther hot...");
-			  tomb2essenceremoval(player);
-		  }
-    }
 	    //**Tomb 1 Artifact
 	  @EventHandler
 		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
@@ -953,7 +931,7 @@ public class Tombs extends JavaPlugin implements Listener {
                       //Location loc = player.getLocation();
                       player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                       player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-                      player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+                      player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
                       player.getInventory().removeItem(player.getInventory().getItemInHand());
                   }
             }, 40L);
