@@ -616,9 +616,9 @@ public class Tombs extends JavaPlugin implements Listener {
                           player.sendMessage(ChatColor.RED + "Not enough Experience!");
                       }
               		}
-              	}
+              	}			    		  
+		}
               }
-          }
     @EventHandler
     public void onPlayerInteract7(PlayerInteractEvent event){
         Player player = event.getPlayer();
@@ -687,6 +687,18 @@ public class Tombs extends JavaPlugin implements Listener {
     }
             }
         }
+    @EventHandler
+    public void onPlayerInteract15(PlayerInteractEvent event){
+		  if((player.getItemInHand().hasItemMeta())
+                  && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                    	&& (!player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName() ==null))
+                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))){
+			  player.sendMessage(ChatColor.DARK_RED + "That Essence is not bound to you!");
+			  player.sendMessage(ChatColor.GREEN + "The Essence is getting rarther hot...");
+			  tomb2essenceremoval(player);
+		  }
+    }
 	    //**Tomb 1 Artifact
 	  @EventHandler
 		public void onPlayerInteract2(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
@@ -807,6 +819,17 @@ public class Tombs extends JavaPlugin implements Listener {
                         player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                   }
             }, 80L);
+            }
+        public void tomb2essenceremoval (final Player player){
+            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+                  public void run() {
+                      //Location loc = player.getLocation();
+                      player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
+                      player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                      player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+                      player.getInventory().removeItem(player.getInventory().getItemInHand());
+                  }
+            }, 40L);
             }
 	}
 
