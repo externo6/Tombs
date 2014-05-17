@@ -776,7 +776,7 @@ public class Tombs extends JavaPlugin implements Listener {
               {         	  
                       if(player.getLevel()>=3)
                       {
-                          if (Cooldowns.tryCooldown(player, "3", 20000))
+                          if (Cooldowns.tryCooldown(player, "3", 23000))
                           {
                               player.setLevel(player.getLevel() - 3);
                               player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 3 Experience Levels used. Charging...");
@@ -838,13 +838,13 @@ public class Tombs extends JavaPlugin implements Listener {
             {
                     if(player.getLevel()>=5)
                     {
-                        if (Cooldowns.tryCooldown(player, "3", 40200))
+                        if (Cooldowns.tryCooldown(player, "3", 45000))
                         {
                             player.setLevel(player.getLevel() - 5);
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Speed Given.");
                                 player.getWorld().playSound(player.getLocation(), Sound.HORSE_GALLOP, 1, 1);
                                 //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 520, 2));
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 2));
                                 
                       }
                         else
@@ -1025,11 +1025,11 @@ public class Tombs extends JavaPlugin implements Listener {
             {
                     if(player.getLevel()>=5)
                     {
-                        if (Cooldowns.tryCooldown(player, "3", 15000))
+                        if (Cooldowns.tryCooldown(player, "3", 45000))
                         {
                             player.setLevel(player.getLevel() - 5);
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Jump Boost Given.");
-                            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 520, 2));
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 2));
                       }
                         else
                         {
