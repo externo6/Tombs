@@ -645,7 +645,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 		    		  {
-					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("")){
+					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("arrow")){
 					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Arrow");
 					    	}
 					  	  	else
@@ -711,7 +711,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 		    		  {
-					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("")){
+					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("jumpboost")){
 					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump Boost");
 					    	}
 					  	  	else
