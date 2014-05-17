@@ -678,7 +678,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 		    		  {
 					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("")){
-					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Arrow");
+					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump Boost");
 					    	}else{
 					    		essence.set(player.getName(), "jumpboost");
 		    			  ItemStack hand = player.getItemInHand();
