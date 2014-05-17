@@ -452,6 +452,8 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	}
 			  	  	else
 			  	  	{
+			  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+			  	  	{
 		    		essence.set(player.getName(), "chargedjump");
 		    			  ItemStack hand = player.getItemInHand();
 		    			  ItemMeta meta = hand.getItemMeta();
@@ -479,6 +481,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		  }
 		    }
 		  }
+		}
 		}
 		@EventHandler
 		public void onPlayerInteractSpeedSign(PlayerInteractEvent event)
@@ -508,7 +511,11 @@ public class Tombs extends JavaPlugin implements Listener {
 		    		  {
 		  		    	if (essence.getString(player.getName()).equalsIgnoreCase("speed")){
 				    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Speed");
-				    	}else{
+				    	}
+		  		    	else
+				    	{
+		  		    		if (Cooldowns.tryCooldown(player, "5", 3000))
+		  		    		{
 				    		essence.set(player.getName(), "Speed");
 		    			  ItemStack hand = player.getItemInHand();
 		    			  ItemMeta meta = hand.getItemMeta();
@@ -537,6 +544,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	    }
 	  }
 	}
+		}
 		@EventHandler
 		public void onPlayerInteractInvisibilitySign(PlayerInteractEvent event)
 		{	
@@ -565,7 +573,11 @@ public class Tombs extends JavaPlugin implements Listener {
 		    		  {
 					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("invisibility")){
 					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Invisibility");
-					    	}else{
+					    	}
+					  	  	else
+					    	{
+					  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+					  	  	{
 					    		essence.set(player.getName(), "Invisibility");
 		    			  ItemStack hand = player.getItemInHand();
 		    			  ItemMeta meta = hand.getItemMeta();
@@ -593,6 +605,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		      }
 		    }
 		  }
+		}
 		}
 		@EventHandler
 		public void onPlayerInteractArrowSign(PlayerInteractEvent event)
@@ -622,7 +635,11 @@ public class Tombs extends JavaPlugin implements Listener {
 		    		  {
 					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("")){
 					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Arrow");
-					    	}else{
+					    	}
+					  	  	else
+					    	{
+						  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+						  	  	{
 					    		essence.set(player.getName(), "Arrow");
 		    			  ItemStack hand = player.getItemInHand();
 		    			  ItemMeta meta = hand.getItemMeta();
@@ -650,6 +667,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		      }
 		    }
 		  }
+		}
 		}
 		@EventHandler
 		public void onPlayerInteractJumpBoostSign(PlayerInteractEvent event)
@@ -679,7 +697,11 @@ public class Tombs extends JavaPlugin implements Listener {
 		    		  {
 					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("")){
 					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump Boost");
-					    	}else{
+					    	}
+					  	  	else
+					    	{
+						  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+						  	  	{
 					    		essence.set(player.getName(), "jumpboost");
 		    			  ItemStack hand = player.getItemInHand();
 		    			  ItemMeta meta = hand.getItemMeta();
@@ -707,6 +729,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		      }
 		    }
 		  }
+		}
 		}
       //**Tomb2 Essence DETECTION
 	    @EventHandler
