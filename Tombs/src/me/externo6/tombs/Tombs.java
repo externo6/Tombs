@@ -19,7 +19,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Vehicle;
@@ -421,7 +421,7 @@ public class Tombs extends JavaPlugin implements Listener {
 	  }
 	  //** Tomb2 Sign Detection	  
 		@EventHandler
-		public void onPlayerInteractJumpSign(PlayerInteractEvent event)
+		public void onPlayerInteractChargedJumpSign(PlayerInteractEvent event)
 		{	
 		  if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK))
 		  {
@@ -434,7 +434,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    		  && (sign.getLine(1).equals("Infuse With:")) 
 		    		  	&& (sign.getLine(2).equals(ChatColor.WHITE + "Charged Jump")))
 		      {
-		    	  if ((player.hasPermission("tombs.essencejump")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
+		    	  if ((player.hasPermission("tombs.essencechargedjump")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
 		    	  {
 		    		  if((player.getItemInHand().hasItemMeta())
 		    	                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
@@ -446,13 +446,13 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 		    		  {
-			  	  	if (essence.getString(player.getName()).equalsIgnoreCase("jump"))
+			  	  	if (essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
 			  	  	{
-			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump");
+			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Charged Jump");
 		    	}
 			  	  	else
 			  	  	{
-		    		essence.set(player.getName(), "Jump");
+		    		essence.set(player.getName(), "chargedjump");
 		    			  ItemStack hand = player.getItemInHand();
 		    			  ItemMeta meta = hand.getItemMeta();
 		    			  ArrayList<String> lore = new ArrayList<String>();
@@ -464,7 +464,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
-		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump");
+		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Charged Jump");
 				  	      try
 					        {
 					          essence.save(essenceFile);
@@ -595,7 +595,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		  }
 		}
 		@EventHandler
-		public void onPlayerInteractFireballSign(PlayerInteractEvent event)
+		public void onPlayerInteractArrowSign(PlayerInteractEvent event)
 		{	
 		  if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK))
 		  {
@@ -606,9 +606,9 @@ public class Tombs extends JavaPlugin implements Listener {
 		      Player player = event.getPlayer();
 		      if ((sign.getLine(0).equals("Tomb Essence")) 
 		    		  && (sign.getLine(1).equals("Infuse With:")) 
-		    		  	&& (sign.getLine(2).equals(ChatColor.WHITE + "Fireball")))
+		    		  	&& (sign.getLine(2).equals(ChatColor.WHITE + "Arrow")))
 		      {
-		    	  if ((player.hasPermission("tombs.essenceinvisibility")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
+		    	  if ((player.hasPermission("tombs.essencearrow")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
 		    	  {
 		    		  if((player.getItemInHand().hasItemMeta())
 		    	                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
@@ -620,22 +620,79 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 		    		  {
-					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("fireball")){
-					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Fireball");
+					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("")){
+					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Arrow");
 					    	}else{
-					    		essence.set(player.getName(), "Fireball");
+					    		essence.set(player.getName(), "Arrow");
 		    			  ItemStack hand = player.getItemInHand();
 		    			  ItemMeta meta = hand.getItemMeta();
 		    			  ArrayList<String> lore = new ArrayList<String>();
 		    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
-		    			  lore.add(ChatColor.BLUE + "Fireball");
-		    			  lore.add(ChatColor.AQUA + "Cost: 2 Levels");
-		    			  lore.add(ChatColor.GREEN+ "Cooldown: 1 Minute");
+		    			  lore.add(ChatColor.BLUE + "Arrow");
+		    			  lore.add(ChatColor.AQUA + "Cost: 6 Levels");
+		    			  lore.add(ChatColor.GREEN+ "Cooldown: 15 Seconds");
 		    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
-		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Fireball");
+		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Arrow");
+				  	      try
+					        {
+					          essence.save(essenceFile);
+					        }
+					        catch (IOException e)
+					        {
+					          e.printStackTrace();
+					        }
+			    			}
+		    		  }
+		    	  }
+		      }
+		    }
+		  }
+		}
+		@EventHandler
+		public void onPlayerInteractJumpBoostSign(PlayerInteractEvent event)
+		{	
+		  if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK))
+		  {
+		    Block block = event.getClickedBlock();
+		    if (block.getType() == Material.WALL_SIGN)
+		    {
+		      Sign sign = (Sign)block.getState();
+		      Player player = event.getPlayer();
+		      if ((sign.getLine(0).equals("Tomb Essence")) 
+		    		  && (sign.getLine(1).equals("Infuse With:")) 
+		    		  	&& (sign.getLine(2).equals(ChatColor.WHITE + "Jump Boost")))
+		      {
+		    	  if ((player.hasPermission("tombs.essencearrow")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
+		    	  {
+		    		  if((player.getItemInHand().hasItemMeta())
+		    	                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+		    	                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+		    	                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+		    	                        || ((player.getItemInHand().hasItemMeta())
+		    	                                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+		    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+		    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+		    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+		    		  {
+					  	  	if (essence.getString(player.getName()).equalsIgnoreCase("")){
+					    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Arrow");
+					    	}else{
+					    		essence.set(player.getName(), "jumpboost");
+		    			  ItemStack hand = player.getItemInHand();
+		    			  ItemMeta meta = hand.getItemMeta();
+		    			  ArrayList<String> lore = new ArrayList<String>();
+		    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+		    			  lore.add(ChatColor.BLUE + "Jump Boost");
+		    			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
+		    			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
+		    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
+		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
+		    			  meta.setLore(lore);
+		    			  hand.setItemMeta(meta);
+		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump Boost");
 				  	      try
 					        {
 					          essence.save(essenceFile);
@@ -699,7 +756,7 @@ public class Tombs extends JavaPlugin implements Listener {
         }
    // }
     @EventHandler
-      public void onPlayerInteractEssenceJump(PlayerInteractEvent event)
+      public void onPlayerInteractEssenceChargedJump(PlayerInteractEvent event)
     {
           Player player = event.getPlayer();
           //Location loc = player.getLocation();
@@ -715,7 +772,7 @@ public class Tombs extends JavaPlugin implements Listener {
                   	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                       && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                           && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                          	&& (essence.getString(player.getName()).equalsIgnoreCase("jump")))
+                          	&& (essence.getString(player.getName()).equalsIgnoreCase("chargedjump")))
               {         	  
                       if(player.getLevel()>=3)
                       {
@@ -746,16 +803,19 @@ public class Tombs extends JavaPlugin implements Listener {
                           	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                               && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                                   && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                                  	&& (!essence.getString(player.getName()).equalsIgnoreCase("jump")))
+                                  	&& (!essence.getString(player.getName()).equalsIgnoreCase("chargedjump")))
                           {
+                	  if (Cooldowns.tryCooldown(player, "5", 4000))
+                	  {
                   	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
                 	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
                 	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
                 	tomb2essenceremoval(player);
                           }
               }
-              }
+             }
           }
+         }
     @EventHandler
     public void onPlayerInteractEssenceSpeed(PlayerInteractEvent event)
     {
@@ -808,6 +868,8 @@ public class Tombs extends JavaPlugin implements Listener {
                             && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
                             	&& (!essence.getString(player.getName()).equalsIgnoreCase("Speed")))
                     {
+            	if (Cooldowns.tryCooldown(player, "5", 4000))
+            	{
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
             	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
@@ -815,6 +877,7 @@ public class Tombs extends JavaPlugin implements Listener {
                     }
             	}
             }
+        }
     }
     @EventHandler
     public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
@@ -867,17 +930,21 @@ public class Tombs extends JavaPlugin implements Listener {
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
                         	&& (!essence.getString(player.getName()).equalsIgnoreCase("Invisibility")))
                 {
+            	if (Cooldowns.tryCooldown(player, "5", 4000))
+            	{
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
             	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
             	tomb2essenceremoval(player);
                 }
             }
+            }
     }
     }
     @EventHandler
-    public void onPlayerInteractEssenceFireBall(PlayerInteractEvent event)
+    public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
     {
+    	
         Player player = event.getPlayer();
         //Location loc = player.getLocation();
         if((event.getAction()==Action.RIGHT_CLICK_AIR) 
@@ -888,20 +955,21 @@ public class Tombs extends JavaPlugin implements Listener {
             {
             if((player.getItemInHand().hasItemMeta())
                 && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Fireball"))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Arrow"))
                 	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                        	&& (essence.getString(player.getName()).equalsIgnoreCase("Fireball")))
+                        	&& (essence.getString(player.getName()).equalsIgnoreCase("Arrow")))
             {
-                    if(player.getLevel()>=2)
+                    if(player.getLevel()>=6)
                     {
-                        if (Cooldowns.tryCooldown(player, "3", 80000))
+                        if (Cooldowns.tryCooldown(player, "3", 15000))
                         {
-                            player.setLevel(player.getLevel() - 2);
-                            player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 2 Experience Levels used. Fireball Shot.");
-                            player.launchProjectile(Fireball.class);
-                                
+                            player.setLevel(player.getLevel() - 6);
+                            player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 6 Experience Levels used. Arrows Shot!");
+                            player.launchProjectile(Arrow.class);
+                            player.launchProjectile(Arrow.class);
+                            player.launchProjectile(Arrow.class);
                       }
                         else
                         {
@@ -918,21 +986,83 @@ public class Tombs extends JavaPlugin implements Listener {
                 }
             else if((player.getItemInHand().hasItemMeta())
                 && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Fireball"))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + ""))
                 	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                        	&& (!essence.getString(player.getName()).equalsIgnoreCase("fireball")))
+                        	&& (!essence.getString(player.getName()).equalsIgnoreCase("")))
                 {
+            	if (Cooldowns.tryCooldown(player, "5", 4000))
+            	{
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
             	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
             	tomb2essenceremoval(player);
                 }
             }
+            }
     }
     }
-
+    @EventHandler
+    public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
+    {
+    	
+        Player player = event.getPlayer();
+        //Location loc = player.getLocation();
+        if((event.getAction()==Action.RIGHT_CLICK_AIR) 
+        		|| event.getAction()==Action.RIGHT_CLICK_BLOCK){
+            if((player.getWorld().getName().equalsIgnoreCase("1point7"))
+            	//	|| (player.getWorld().getName().equalsIgnoreCase("dun1")) 
+            		|| (player.getWorld().getName().equalsIgnoreCase("1point7_Nether")))
+            {
+            if((player.getItemInHand().hasItemMeta())
+                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Jump Boost"))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
+                        	&& (essence.getString(player.getName()).equalsIgnoreCase("jumpboost")))
+            {
+                    if(player.getLevel()>=5)
+                    {
+                        if (Cooldowns.tryCooldown(player, "3", 15000))
+                        {
+                            player.setLevel(player.getLevel() - 5);
+                            player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Jump Boost Given.");
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 520, 1));
+                      }
+                        else
+                        {
+                    	  if (Cooldowns.tryCooldown(player, "4", 4000))
+                    	  {
+                    	  player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.BLUE + " On Cooldown!");
+                      }
+                    }
+                   }
+                    else
+                    {
+                        player.sendMessage(ChatColor.RED + "Not enough Experience!");
+                }
+                }
+            else if((player.getItemInHand().hasItemMeta())
+                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + ""))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
+                        	&& (!essence.getString(player.getName()).equalsIgnoreCase("")))
+                {
+            	if (Cooldowns.tryCooldown(player, "5", 4000))
+            	{
+              	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
+            	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
+            	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
+            	tomb2essenceremoval(player);
+                }
+            }
+            }
+    }
+    }
 	    //**Tomb 1 Artifact
 	  @EventHandler
 		public void onPlayerInteractTombArtifactInfo(PlayerInteractEvent event){ //If they are not in the correct world, they will not be teleported.
@@ -1022,9 +1152,7 @@ public class Tombs extends JavaPlugin implements Listener {
 					}
 				}
 			}
-		}
-	  
-
+		}  
 		public void delay (final Player player)
 		{	
 			getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() 
