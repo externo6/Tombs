@@ -452,7 +452,7 @@ public class Tombs extends JavaPlugin implements Listener {
 		    	}
 			  	  	else
 			  	  	{
-			  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+			  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
 			  	  	{
 		    		essence.set(player.getName(), "chargedjump");
 		    			  ItemStack hand = player.getItemInHand();
@@ -476,13 +476,17 @@ public class Tombs extends JavaPlugin implements Listener {
 					          e.printStackTrace();
 					        }
 		    			}
-		    		  }
-		    }
-		  }
-		    }
-		  }
-		}
-		}
+			  	  	else		    				
+		    			    {
+    			    	player.sendMessage(ChatColor.GREEN + "Please Wait... Changing too fast!");
+		    			    }
+				    	}
+	    		  }
+	    	  }
+	      }
+	    }
+	  }
+	}
 		@EventHandler
 		public void onPlayerInteractSpeedSign(PlayerInteractEvent event)
 		{	
@@ -514,7 +518,7 @@ public class Tombs extends JavaPlugin implements Listener {
 				    	}
 		  		    	else
 				    	{
-		  		    		if (Cooldowns.tryCooldown(player, "5", 3000))
+		  		    		if (Cooldowns.tryCooldown(player, "5", 2000))
 		  		    		{
 				    		essence.set(player.getName(), "Speed");
 		    			  ItemStack hand = player.getItemInHand();
@@ -537,14 +541,18 @@ public class Tombs extends JavaPlugin implements Listener {
 					        {
 					          e.printStackTrace();
 				        }
-	    			}	
+	    			}
+					  	  	else		    				
+		    			    {
+		    			    	player.sendMessage(ChatColor.GREEN + "Please Wait... Changing too fast!");
+		    			    }
+				    	}
 	    		  }
 	    	  }
 	      }
 	    }
 	  }
 	}
-		}
 		@EventHandler
 		public void onPlayerInteractInvisibilitySign(PlayerInteractEvent event)
 		{	
@@ -576,7 +584,7 @@ public class Tombs extends JavaPlugin implements Listener {
 					    	}
 					  	  	else
 					    	{
-					  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+					  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
 					  	  	{
 					    		essence.set(player.getName(), "Invisibility");
 		    			  ItemStack hand = player.getItemInHand();
@@ -600,13 +608,17 @@ public class Tombs extends JavaPlugin implements Listener {
 					          e.printStackTrace();
 					        }
 			    			}
-		    		  }
-		    	  }
-		      }
-		    }
-		  }
-		}
-		}
+					  	  	else		    				
+		    			    {
+		    			    	player.sendMessage(ChatColor.GREEN + "Please Wait... Changing too fast!");
+		    			    }
+				    	}
+	    		  }
+	    	  }
+	      }
+	    }
+	  }
+	}
 		@EventHandler
 		public void onPlayerInteractArrowSign(PlayerInteractEvent event)
 		{	
@@ -638,7 +650,7 @@ public class Tombs extends JavaPlugin implements Listener {
 					    	}
 					  	  	else
 					    	{
-						  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+						  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
 						  	  	{
 					    		essence.set(player.getName(), "Arrow");
 		    			  ItemStack hand = player.getItemInHand();
@@ -662,12 +674,16 @@ public class Tombs extends JavaPlugin implements Listener {
 					          e.printStackTrace();
 					        }
 			    			}
+						  	  	else		    				
+			    			    {
+			    			    	player.sendMessage(ChatColor.GREEN + "Please Wait... Changing too fast!");
+			    			    }
+					    	}
 		    		  }
 		    	  }
 		      }
 		    }
 		  }
-		}
 		}
 		@EventHandler
 		public void onPlayerInteractJumpBoostSign(PlayerInteractEvent event)
@@ -700,7 +716,7 @@ public class Tombs extends JavaPlugin implements Listener {
 					    	}
 					  	  	else
 					    	{
-						  	  	if (Cooldowns.tryCooldown(player, "5", 3000))
+						  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
 						  	  	{
 					    		essence.set(player.getName(), "jumpboost");
 		    			  ItemStack hand = player.getItemInHand();
@@ -724,12 +740,16 @@ public class Tombs extends JavaPlugin implements Listener {
 					          e.printStackTrace();
 					        }
 			    			}
+						  	  	else		    				
+			    			    {
+			    			    	player.sendMessage(ChatColor.GREEN + "Please Wait... Changing too fast!");
+			    			    }
+					    	}
 		    		  }
 		    	  }
 		      }
 		    }
 		  }
-		}
 		}
       //**Tomb2 Essence DETECTION
 	    @EventHandler
