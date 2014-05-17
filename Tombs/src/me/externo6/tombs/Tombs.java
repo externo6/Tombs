@@ -1,12 +1,11 @@
 package me.externo6.tombs;
 
-import java.util.logging.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
