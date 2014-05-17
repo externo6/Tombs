@@ -844,7 +844,7 @@ public class Tombs extends JavaPlugin implements Listener {
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Speed Given.");
                                 player.getWorld().playSound(player.getLocation(), Sound.HORSE_GALLOP, 1, 1);
                                 //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 520, 1));
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 520, 2));
                                 
                       }
                         else
@@ -1029,7 +1029,7 @@ public class Tombs extends JavaPlugin implements Listener {
                         {
                             player.setLevel(player.getLevel() - 5);
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Jump Boost Given.");
-                            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 520, 1));
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 520, 2));
                       }
                         else
                         {
@@ -1207,7 +1207,7 @@ public class Tombs extends JavaPlugin implements Listener {
                   public void run() {
                       //Location loc = player.getLocation();
                       player.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "Me" + ChatColor.GOLD + "]" + ChatColor.WHITE + ":" + ChatColor.GREEN + " Woah!");
-                        player.setVelocity(new Vector(0,1.40,0));   
+                        player.setVelocity(new Vector(0,1.50,0));   
                         player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_LARGE, 0);
                         player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                   }
