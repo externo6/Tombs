@@ -795,7 +795,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
-                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
           }
         }
@@ -858,7 +858,7 @@ public class Tombs extends JavaPlugin implements Listener {
                     player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                     player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                     player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
-                    player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
+                    player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                           }
               }
              }
@@ -924,7 +924,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
-                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                     }
             	}
             }
@@ -989,7 +989,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
-                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                 }
             }
             }
@@ -1054,7 +1054,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
-                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                 }
             }
             }
@@ -1117,7 +1117,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                 player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
-                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                 }
             }
             }
