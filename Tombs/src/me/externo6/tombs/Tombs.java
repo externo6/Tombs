@@ -791,9 +791,11 @@ public class Tombs extends JavaPlugin implements Listener {
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
             {
             	player.sendMessage(ChatColor.DARK_RED +"This Essence is not bound to you!");
-            	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
-            	tomb2essenceremoval(player);
+                player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
+                player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
             }
           }
         }
@@ -851,10 +853,12 @@ public class Tombs extends JavaPlugin implements Listener {
                 	  if (Cooldowns.tryCooldown(player, "5", 4000))
                 	  {
                   	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
-                	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
                 	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
                     player.getInventory().removeItem(player.getInventory().getItemInHand());
-                	tomb2essenceremoval(player);
+                    player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
+                    player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+                    player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
                           }
               }
              }
@@ -915,10 +919,12 @@ public class Tombs extends JavaPlugin implements Listener {
             	if (Cooldowns.tryCooldown(player, "5", 4000))
             	{
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
-            	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
                 player.getInventory().removeItem(player.getInventory().getItemInHand());
-            	tomb2essenceremoval(player);
+                player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
+                player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
                     }
             	}
             }
@@ -978,10 +984,12 @@ public class Tombs extends JavaPlugin implements Listener {
             	if (Cooldowns.tryCooldown(player, "5", 4000))
             	{
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
-            	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
                 player.getInventory().removeItem(player.getInventory().getItemInHand());
-            	tomb2essenceremoval(player);
+                player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
+                player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
                 }
             }
             }
@@ -1041,10 +1049,12 @@ public class Tombs extends JavaPlugin implements Listener {
             	if (Cooldowns.tryCooldown(player, "5", 4000))
             	{
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
-            	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
                 player.getInventory().removeItem(player.getInventory().getItemInHand());
-            	tomb2essenceremoval(player);
+                player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
+                player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
                 }
             }
             }
@@ -1102,10 +1112,12 @@ public class Tombs extends JavaPlugin implements Listener {
             	if (Cooldowns.tryCooldown(player, "5", 4000))
             	{
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
-            	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
                 player.getInventory().removeItem(player.getInventory().getItemInHand());
-            	tomb2essenceremoval(player);
+                player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
+                player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+                player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding");
                 }
             }
             }
@@ -1260,19 +1272,6 @@ public class Tombs extends JavaPlugin implements Listener {
                         player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                   }
             }, 90L);
-            }
-        public void tomb2essenceremoval (final Player player)
-        {
-            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() 
-            {
-                  public void run() 
-                  {
-                      //Location loc = player.getLocation();
-                      player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
-                      player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-                      player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
-                  }
-            }, 20L);
             }
 	}
 
