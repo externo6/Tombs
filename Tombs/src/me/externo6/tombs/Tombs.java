@@ -752,16 +752,36 @@ public class Tombs extends JavaPlugin implements Listener {
 		  }
 		}
       //**Tomb2 Essence DETECTION
+		@EventHandler
+		public void onPlayerInteractWrongWorld(PlayerInteractEvent event)
+		{
+			Player player = event.getPlayer();
+			if (player.getWorld().getName().equalsIgnoreCase("dun1"))
+			{
+			if((event.getAction()==Action.RIGHT_CLICK_AIR)  
+	        			|| (event.getAction()==Action.LEFT_CLICK_AIR) 
+	        				|| (event.getAction()==Action.LEFT_CLICK_BLOCK)){
+					 if((player.getItemInHand().hasItemMeta())
+				                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+				                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+				                    && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
+					 {
+						 if (Cooldowns.tryCooldown(player, "6", 2000)){
+						 player.sendMessage(ChatColor.BLUE + ("You can only use the Essence in the survival world."));
+					 }
+						}
+			}
+			}
+		}
 	    @EventHandler
     	public void onPlayerInteractUninfused(PlayerInteractEvent event)
 	    {
         Player player = event.getPlayer();
-        Block block = event.getClickedBlock();
         if((event.getAction()==Action.RIGHT_CLICK_AIR) 
         		|| (event.getAction()==Action.RIGHT_CLICK_BLOCK) 
         			|| (event.getAction()==Action.LEFT_CLICK_AIR) 
-        				|| (event.getAction()==Action.LEFT_CLICK_BLOCK)
-        					|| (block.getType() == Material.WALL_SIGN)) {
+        				|| (event.getAction()==Action.LEFT_CLICK_BLOCK)){
+        					//|| (block.getType() == Material.WALL_SIGN)) {
           //  if((player.getWorld().getName().equalsIgnoreCase("1point7")) ||
             //        (player.getWorld().getName().equalsIgnoreCase("1point7_Nether"))){
             if((player.getItemInHand().hasItemMeta())
@@ -769,7 +789,10 @@ public class Tombs extends JavaPlugin implements Listener {
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence")))
             {
+            	 if (Cooldowns.tryCooldown(player, "7", 2000)){
+
             	player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " This Essence has not been infused yet!");
+            	 }
             }
           }
         }
