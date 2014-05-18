@@ -466,6 +466,8 @@ public class Tombs extends JavaPlugin implements Listener {
 		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
+		    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+		    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Charged Jump");
 				  	      try
 					        {
@@ -532,6 +534,8 @@ public class Tombs extends JavaPlugin implements Listener {
 		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
+		    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+		    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Speed");
 				  	      try
 					        {
@@ -598,6 +602,8 @@ public class Tombs extends JavaPlugin implements Listener {
 		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
+		    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+		    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Invisibility");
 				  	      try
 					        {
@@ -664,6 +670,8 @@ public class Tombs extends JavaPlugin implements Listener {
 		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
+		    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+		    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Arrow");
 				  	      try
 					        {
@@ -730,6 +738,8 @@ public class Tombs extends JavaPlugin implements Listener {
 		    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 		    			  meta.setLore(lore);
 		    			  hand.setItemMeta(meta);
+		    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+		    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 		    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump Boost");
 				  	      try
 					        {
@@ -849,6 +859,7 @@ public class Tombs extends JavaPlugin implements Listener {
                               player.setLevel(player.getLevel() - 3);
                               player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 3 Experience Levels used. Charging...");
                                   player.getWorld().playSound(player.getLocation(), Sound.PORTAL_TRIGGER, 1, 1);
+                                  ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                                   //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
                                       tomb2powerupjump(player);
                         }
@@ -914,6 +925,7 @@ public class Tombs extends JavaPlugin implements Listener {
                             player.setLevel(player.getLevel() - 5);
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Speed Given.");
                                 player.getWorld().playSound(player.getLocation(), Sound.HORSE_GALLOP, 1, 1);
+                                ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                                 //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
                                 player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 2));
                                 
@@ -979,6 +991,7 @@ public class Tombs extends JavaPlugin implements Listener {
                             player.setLevel(player.getLevel() - 20);
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 20 Experience Levels used. Invisibility Given.");
                                 player.getWorld().playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
+                                ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                                 //player.getWorld().spawn(player.getLocation(), ExperienceOrb.class);
                                 player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 400, 1));
                                 
@@ -1044,6 +1057,7 @@ public class Tombs extends JavaPlugin implements Listener {
                         {
                             player.setLevel(player.getLevel() - 6);
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 6 Experience Levels used. Arrows Shot!");
+                            ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                             player.launchProjectile(Arrow.class);
                             player.launchProjectile(Arrow.class);
                             player.launchProjectile(Arrow.class);
@@ -1110,6 +1124,7 @@ public class Tombs extends JavaPlugin implements Listener {
                             player.setLevel(player.getLevel() - 5);
                             player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Jump Boost Given.");
                             player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 2));
+                            ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                       }
                         else
                         {
