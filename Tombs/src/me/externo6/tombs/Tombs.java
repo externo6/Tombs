@@ -1104,6 +1104,7 @@ public class Tombs extends JavaPlugin implements Listener {
               	player.sendMessage(ChatColor.DARK_RED +"You may only have one essence bound at a time!");
             	player.sendMessage(ChatColor.RED + "The Essence is getting rarther hot...");
             	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
+                player.getInventory().removeItem(player.getInventory().getItemInHand());
             	tomb2essenceremoval(player);
                 }
             }
@@ -1271,7 +1272,7 @@ public class Tombs extends JavaPlugin implements Listener {
                       player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
                       player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
                   }
-            }, 60L);
+            }, 20L);
             }
 	}
 
