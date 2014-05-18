@@ -1029,7 +1029,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 }
             else if((player.getItemInHand().hasItemMeta())
                 && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + ""))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "arrow"))
                 	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
@@ -1089,7 +1089,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 }
             else if((player.getItemInHand().hasItemMeta())
                 && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + ""))
+                	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "jumpboost"))
                 	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
