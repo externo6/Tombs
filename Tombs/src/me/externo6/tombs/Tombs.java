@@ -1033,7 +1033,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                        	&& (!essence.getString(player.getName()).equalsIgnoreCase("")))
+                        	&& (!essence.getString(player.getName()).equalsIgnoreCase("arrow")))
                 {
             	if (Cooldowns.tryCooldown(player, "5", 4000))
             	{
@@ -1093,7 +1093,7 @@ public class Tombs extends JavaPlugin implements Listener {
                 	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                     && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                         && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                        	&& (!essence.getString(player.getName()).equalsIgnoreCase("")))
+                        	&& (!essence.getString(player.getName()).equalsIgnoreCase("jumpboost")))
                 {
             	if (Cooldowns.tryCooldown(player, "5", 4000))
             	{
