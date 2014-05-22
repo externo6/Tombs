@@ -1,0 +1,71 @@
+package me.externo6.tombs;
+
+import java.util.Arrays;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.Sign;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
+
+public class Tomb2Signs implements Listener{
+	
+	@EventHandler
+	public void onPlayerInteractTomb2Kit(PlayerInteractEvent event)
+	{
+		if (event.getAction() == Action.RIGHT_CLICK_BLOCK)
+		{
+			Block block = event.getClickedBlock();
+			if (block.getType() == Material.WALL_SIGN)
+			{
+				Sign sign = (Sign)block.getState();
+				Player player = event.getPlayer();
+				String[] lores = {"Not for Sale"};
+				ItemStack sword = new ItemStack(Material.IRON_SWORD, 1);
+				ItemMeta meta = sword.getItemMeta();
+				meta.setLore(Arrays.asList(lores));
+				sword.setItemMeta(meta);
+				if ((sign.getLine(0).equals(ChatColor.DARK_BLUE + "Tomb")) && (sign.getLine(1).equals("Armour")))
+					if ((player.hasPermission("tombs.armour")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
+					{
+						player.getInventory().clear();
+						player.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET, 1));
+						player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE, 1));
+						player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS, 1));
+						player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS, 1));
+						player.getInventory().setItemInHand(sword);
+					}
+			}
+		}
+	}
+
+	Player player = null;
+	@EventHandler
+	public void onPlayerInteract(PlayerInteractEvent event)
+	{	
+	  if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK))
+	  {
+	    Block block = event.getClickedBlock();
+	    if (block.getType() == Material.WALL_SIGN)
+	    {
+	      Sign sign = (Sign)block.getState();
+	      Player player = event.getPlayer();
+	      if ((sign.getLine(0).equals("[]")) 
+	    		  && (sign.getLine(1).equals("<>")) 
+	    		  	&& (sign.getLine(2).equals(":")) 
+	    		  		&& (sign.getLine(3).equals("-")))
+	    	  if ((player.hasPermission("tombs.signjump")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
+	    	  {
+	    	  player.setVelocity(new Vector(0,3,0));
+	          }
+	    }
+	  }
+  }
+}
