@@ -448,11 +448,11 @@ public class Tomb2Essence implements Listener{
             {
           if((player.getItemInHand().hasItemMeta())
               && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-              	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.AQUA + "Charged Jump"))
+              	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.BLUE + "Charged Jump"))
               	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName())
                   && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                       && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
-                     	//&& (essence.getString(player.getName()).equalsIgnoreCase("chargedjump")))
+                     	&& (essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
         	  && player.hasPermission("tombs.chargedjump"))
           {         	  
                   if(player.getLevel()>=3)
