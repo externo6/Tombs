@@ -295,8 +295,8 @@ public class Tomb2Essence implements Listener{
 	    			  ArrayList<String> lore = new ArrayList<String>();
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  lore.add(ChatColor.BLUE + "Arrow");
-	    			  lore.add(ChatColor.AQUA + "Cost: 6 Levels");
-	    			  lore.add(ChatColor.GREEN+ "Cooldown: 15 Seconds");
+	    			  lore.add(ChatColor.AQUA + "Cost: 4 Levels");
+	    			  lore.add(ChatColor.GREEN+ "Cooldown: 2 Seconds");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 	    			  meta.setLore(lore);
@@ -452,7 +452,7 @@ public class Tomb2Essence implements Listener{
               	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName())
                   && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                       && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
-                     	&& (essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
+                     && (essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
         	  && player.hasPermission("tombs.chargedjump"))
           {         	  
                   if(player.getLevel()>=3)
@@ -636,6 +636,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
         }
 }
 }
+@SuppressWarnings("deprecation")
 @EventHandler
 public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
 {
@@ -657,20 +658,21 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
                     	&& (essence.getString(player.getName()).equalsIgnoreCase("Arrow"))
                     	&& player.hasPermission("tombs.arrow"))
         {
-                if(player.getLevel()>=6)
+                if((player.getLevel()>=4) && (player.getInventory().contains(Material.ARROW, 2)))
                 {
-                    if (Cooldowns.tryCooldown(player, "3", 15000))
+                    if (Cooldowns.tryCooldown(player, "3", 2000))
                     {
-                        player.setLevel(player.getLevel() - 6);
-                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 6 Experience Levels used. Arrows Shot!");
+                        player.setLevel(player.getLevel() - 4);
+                        player.getInventory().removeItem(new ItemStack(Material.ARROW, 2));
+                        player.updateInventory();
+                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 4 Experience Levels used. 1 Critical and 1 Fire Arrow shot");
                         ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
-                        player.launchProjectile(Arrow.class);
-                        player.launchProjectile(Arrow.class);
-                        player.launchProjectile(Arrow.class);
+                        player.launchProjectile(Arrow.class).setCritical(true);
+                        player.launchProjectile(Arrow.class).setFireTicks(300);;
                   }
                     else
                     {
-                	  if (Cooldowns.tryCooldown(player, "4", 4000))
+                	  if (Cooldowns.tryCooldown(player, "4", 2000))
                 	  {
                 	  player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.BLUE + " On Cooldown!");
                   }
@@ -678,7 +680,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
                }
                 else
                 {
-                    player.sendMessage(ChatColor.RED + "Not enough Experience!");
+                    player.sendMessage(ChatColor.RED + "Not enough Experience or Arrows!");
             }
             }
         else if((player.getItemInHand().hasItemMeta())
