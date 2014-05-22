@@ -13,8 +13,7 @@ public class MinecartListener implements Listener{
 	private static Vehicle vehicle = null;	
 	@EventHandler
 	public void onVehicleExit(VehicleExitEvent event){
-		Minecart minecart = (Minecart) event.getVehicle();
-		if(minecart.getWorld().getName().equalsIgnoreCase("world") && (event.getVehicle() instanceof Minecart))
+		if(event.getVehicle() instanceof Minecart)
 	  {
 	    vehicle = event.getVehicle();
 	    Location loc = vehicle.getLocation();

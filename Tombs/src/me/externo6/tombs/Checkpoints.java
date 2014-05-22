@@ -29,7 +29,7 @@ public class Checkpoints implements Listener, CommandExecutor{
     public static FileConfiguration respawns = YamlConfiguration.loadConfiguration(respawnFile);
 	static File checkpointFile = new File("./plugins/Tombs", "Checkpoint.yml");
 	public static FileConfiguration checkpoint = YamlConfiguration.loadConfiguration(checkpointFile);
-	PluginDescriptionFile pdf = Bukkit.getPluginManager().getPlugin("TombsReloaded").getDescription();
+	PluginDescriptionFile pdf = Bukkit.getPluginManager().getPlugin("Tombs").getDescription();
 	
 	
 	
