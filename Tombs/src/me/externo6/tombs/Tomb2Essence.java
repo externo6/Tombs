@@ -295,7 +295,7 @@ public class Tomb2Essence implements Listener{
 	    			  ArrayList<String> lore = new ArrayList<String>();
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  lore.add(ChatColor.BLUE + "Arrow");
-	    			  lore.add(ChatColor.AQUA + "Cost: 4 Levels");
+	    			  lore.add(ChatColor.AQUA + "Cost: 4 Levels, 2 Arrows");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 2 Seconds");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
