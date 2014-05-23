@@ -427,6 +427,7 @@ public class Tomb2Essence implements Listener{
                 && (!player.getItemInHand().getItemMeta().getLore().contains((ChatColor.GRAY + "Bound to: " + player.getName())))
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
         {
+        	player.getInventory().removeItem(player.getInventory().getItemInHand());
         	player.sendMessage(ChatColor.DARK_RED +"This Essence is not bound to you!");
         	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
