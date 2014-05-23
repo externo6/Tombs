@@ -62,7 +62,7 @@ public class Tomb2Signs implements Listener{
 	    	  if ((player.hasPermission("tombs.tomb2essence")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
 	    	  {
 	    		  player.sendMessage(ChatColor.GREEN + "You can now use the warp " + ChatColor.GOLD + "/warp essence");
-	    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "pex user" + player.getName() + "add essentials.warps.essence");
+	    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "pex user " + player.getName() + " add essentials.warps.essence");
 	          }
 	    }
 	  }
