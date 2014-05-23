@@ -2,6 +2,7 @@ package me.externo6.tombs;
 
 import java.util.Arrays;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -46,6 +47,26 @@ public class Tomb2Signs implements Listener{
 		}
 	}
 
+	@EventHandler
+	public void onPlayerInteractPermission(PlayerInteractEvent event)
+	{	
+	  if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK))
+	  {
+	    Block block = event.getClickedBlock();
+	    if (block.getType() == Material.WALL_SIGN)
+	    {
+	      Sign sign = (Sign)block.getState();
+	      Player player = event.getPlayer();
+	      if ((sign.getLine(0).equals(ChatColor.DARK_BLUE + "[Kit]")) 
+	    		  	&& (sign.getLine(1).equals("Tomb2Essence"))) 
+	    	  if ((player.hasPermission("tombs.tomb2essence")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
+	    	  {
+	    		  player.sendMessage(ChatColor.GREEN + "You can now use the warp " + ChatColor.GOLD + "/warp essence");
+	    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "pex user" + player.getName() + "add essentials.warps.essence");
+	          }
+	    }
+	  }
+  }
 	Player player = null;
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event)
@@ -69,3 +90,4 @@ public class Tomb2Signs implements Listener{
 	  }
   }
 }
+//getSever().dispatchCommand(getServer().getConsoleSender, "command goes here");

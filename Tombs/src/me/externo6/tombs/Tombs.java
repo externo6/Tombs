@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Sound;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -103,5 +104,14 @@ public static void tomb2powerupjump (final Player player)
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
           }
     }, 90L);
+    }
+public static void arrowfire2 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	  player.launchProjectile(Arrow.class).setFireTicks(300);
+          }
+    }, 6L);
     }
 }

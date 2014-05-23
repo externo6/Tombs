@@ -431,7 +431,7 @@ public class Tomb2Essence implements Listener{
         	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
         }
       }
@@ -494,7 +494,7 @@ public class Tomb2Essence implements Listener{
                 player.getInventory().removeItem(player.getInventory().getItemInHand());
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
                 player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                       }
           }
@@ -562,7 +562,7 @@ public void onPlayerInteractEssenceSpeed(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                 }
         	}
@@ -629,7 +629,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
@@ -668,7 +668,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
                         player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 4 Experience Levels used. 1 Critical and 1 Fire Arrow shot");
                         ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                         player.launchProjectile(Arrow.class).setCritical(true);
-                        player.launchProjectile(Arrow.class).setFireTicks(300);;
+                        Tombs.arrowfire2(player);
                   }
                     else
                     {
@@ -698,7 +698,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
@@ -763,7 +763,7 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 50, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
