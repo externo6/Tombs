@@ -1,13 +1,10 @@
 package me.externo6.tombs;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Vehicle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.vehicle.VehicleExitEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class MinecartListener implements Listener{	
 	private static Vehicle vehicle = null;	
