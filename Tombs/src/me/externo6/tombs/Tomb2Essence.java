@@ -338,7 +338,7 @@ public class Tomb2Essence implements Listener{
 	    		  && (sign.getLine(1).equals("Infuse With:")) 
 	    		  	&& (sign.getLine(2).equals(ChatColor.WHITE + "Jump Boost")))
 	      {
-	    	  if ((player.hasPermission("tombs.essencearrow")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
+	    	  if ((player.hasPermission("tombs.essencejumpboost")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
 	    	  {
 	    		  if((player.getItemInHand().hasItemMeta())
 	    	                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
@@ -453,8 +453,7 @@ public class Tomb2Essence implements Listener{
               	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName())
                   && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                       && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
-                     && (essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
-        	  && player.hasPermission("tombs.chargedjump"))
+                     && (essence.getString(player.getName()).equalsIgnoreCase("chargedjump")))
           {         	  
                   if(player.getLevel()>=3)
                   {
@@ -520,8 +519,7 @@ public void onPlayerInteractEssenceSpeed(PlayerInteractEvent event)
             	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                 && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                    && (essence.getString(player.getName()).equalsIgnoreCase("speed"))
-                    && player.hasPermission("tombs.speed"))
+                    && (essence.getString(player.getName()).equalsIgnoreCase("speed")))
         {
                 if(player.getLevel()>=5)
                 {
@@ -587,8 +585,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
             	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                 && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                    	&& (essence.getString(player.getName()).equalsIgnoreCase("Invisibility"))
-                    	&& player.hasPermission("tombs.invisibility"))
+                    	&& (essence.getString(player.getName()).equalsIgnoreCase("Invisibility")))
         {
                 if(player.getLevel()>=20)
                 {
@@ -656,8 +653,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
             	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                 && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                    	&& (essence.getString(player.getName()).equalsIgnoreCase("Arrow"))
-                    	&& player.hasPermission("tombs.arrow"))
+                    	&& (essence.getString(player.getName()).equalsIgnoreCase("Arrow")))
         {
                 if((player.getLevel()>=4) && (player.getInventory().contains(Material.ARROW, 2)))
                 {
@@ -724,8 +720,7 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
             	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
                 && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
-                    	&& (essence.getString(player.getName()).equalsIgnoreCase("jumpboost"))
-                    	&& player.hasPermission("tombs.jumpboost"))
+                    	&& (essence.getString(player.getName()).equalsIgnoreCase("jumpboost")))
         {
                 if(player.getLevel()>=5)
                 {
