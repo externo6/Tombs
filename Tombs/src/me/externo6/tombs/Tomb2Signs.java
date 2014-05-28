@@ -66,7 +66,7 @@ public class Tomb2Signs implements Listener{
 	    			  player.sendMessage(ChatColor.GREEN + "You can now use the warp " + ChatColor.GOLD + "/warp essence");
 	    			  player.sendMessage(ChatColor.AQUA + "You can infuse your essence with the signs behind you.");
 		    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "pex user " + player.getName() + " add essentials.warps.essence");
-		    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "pex user " + player.getName() + " add tombs.(tomb2essence|essencechargedjump|essencespeed|essenceinvisibility|essencearrow|essencejumpboost)");
+		    		  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "pex user " + player.getName() + " add tombs.(tomb2essence|essencechargedjump|essencespeed|essenceinvisibility|essencearrow|essencejumpboost) dun1");
 	    		  }
 	          }
 	    }

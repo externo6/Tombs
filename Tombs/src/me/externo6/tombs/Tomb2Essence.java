@@ -16,6 +16,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -90,6 +91,7 @@ public class Tomb2Essence implements Listener{
 	    			  ItemMeta meta = hand.getItemMeta();
 	    			  ArrayList<String> lore = new ArrayList<String>();
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Charged Jump");
 	    			  lore.add(ChatColor.AQUA + "Cost: 3 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 15 Seconds");
@@ -158,6 +160,7 @@ public class Tomb2Essence implements Listener{
 	    			  ItemMeta meta = hand.getItemMeta();
 	    			  ArrayList<String> lore = new ArrayList<String>();
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Speed");
 	    			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
@@ -226,6 +229,7 @@ public class Tomb2Essence implements Listener{
 	    			  ItemMeta meta = hand.getItemMeta();
 	    			  ArrayList<String> lore = new ArrayList<String>();
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Invisibility");
 	    			  lore.add(ChatColor.AQUA + "Cost: 20 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 1 Minute");
@@ -294,6 +298,7 @@ public class Tomb2Essence implements Listener{
 	    			  ItemMeta meta = hand.getItemMeta();
 	    			  ArrayList<String> lore = new ArrayList<String>();
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Arrow");
 	    			  lore.add(ChatColor.AQUA + "Cost: 4 Levels, 2 Arrows");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 2 Seconds");
@@ -362,6 +367,7 @@ public class Tomb2Essence implements Listener{
 	    			  ItemMeta meta = hand.getItemMeta();
 	    			  ArrayList<String> lore = new ArrayList<String>();
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Jump Boost");
 	    			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
@@ -432,7 +438,7 @@ public class Tomb2Essence implements Listener{
         	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+            player.setFireTicks(60);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
         }
       }
@@ -494,7 +500,7 @@ public class Tomb2Essence implements Listener{
                 player.getInventory().removeItem(player.getInventory().getItemInHand());
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-                player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+                player.setFireTicks(60);
                 player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                       }
           }
@@ -561,7 +567,7 @@ public void onPlayerInteractEssenceSpeed(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+            player.setFireTicks(60);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                 }
         	}
@@ -627,7 +633,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+            player.setFireTicks(60);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
@@ -695,7 +701,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+            player.setFireTicks(60);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
@@ -759,7 +765,7 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1));
+            player.setFireTicks(60);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
@@ -767,4 +773,6 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
 }
 }
 }
+
+
 

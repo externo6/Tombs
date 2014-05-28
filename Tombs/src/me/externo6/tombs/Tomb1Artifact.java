@@ -72,8 +72,8 @@ public class Tomb1Artifact implements Listener{
 						{
 				if (Cooldowns.tryCooldown(player, "1", 15000)) 
 				{
-				player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 180, 1));
-				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 500, 1));
+				player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 150, 2));
+				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 1));
 				player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 120, 100));
 				player.sendMessage(ChatColor.GOLD + "The Artifact is surging with energy");
 				player.sendMessage(ChatColor.GREEN + "You feel an energy build up and flung into the air!");
