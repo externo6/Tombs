@@ -438,7 +438,7 @@ public class Tomb2Essence implements Listener{
         	player.getWorld().playSound(player.getLocation(), Sound.FIRE, 1, 1);
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.setFireTicks(60);
+            player.setFireTicks(120);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
         }
       }
@@ -500,7 +500,7 @@ public class Tomb2Essence implements Listener{
                 player.getInventory().removeItem(player.getInventory().getItemInHand());
                 player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-                player.setFireTicks(60);
+                player.setFireTicks(120);
                 player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                       }
           }
@@ -567,7 +567,7 @@ public void onPlayerInteractEssenceSpeed(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.setFireTicks(60);
+            player.setFireTicks(120);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
                 }
         	}
@@ -633,7 +633,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.setFireTicks(60);
+            player.setFireTicks(120);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
@@ -701,7 +701,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.setFireTicks(60);
+            player.setFireTicks(120);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
@@ -765,7 +765,7 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
             player.getInventory().removeItem(player.getInventory().getItemInHand());
             player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_HUGE, 0);
             player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
-            player.setFireTicks(60);
+            player.setFireTicks(120);
             player.sendMessage(ChatColor.RED + "The Essence burnt you upon exploding...");
             }
         }
