@@ -2,6 +2,7 @@ name: Tombs
 main: me.externo6.tombs.Tombs
 authers: externo6
 version: 3.2.0
+depend: [ProtocolLib]
 description: >
              Developed for Banxsi.com by externo6. Used for the Tomb challenges. /tombs or /tomb for all commands associated. Adds checkpoints, tomb kit and a use for the Artifact.
 commands: 
