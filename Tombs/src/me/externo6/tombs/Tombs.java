@@ -38,7 +38,7 @@ public void onEnable() {
 	PluginDescriptionFile pdfFile = this.getDescription();
 	this.logger.info("[Tombs]" + " Version " + pdfFile.getVersion() + " |" + " Developed for Banxsi.com by externo6");
     plugin = this;
-    registerEvents(this, new Tomb2Essence(), new DeathListener(), new MinecartListener(), new Tomb2Signs(), new WorldChangeListener(), new Checkpoints(), new Tomb1Artifact());
+    registerEvents(this, new Tomb2Essence(), new Interface(), new DeathListener(), new MinecartListener(), new Tomb2Signs(), new WorldChangeListener(), new Checkpoints(), new Tomb1Artifact());
     getCommand("tomb").setExecutor(new Checkpoints());
     getCommand("tombs").setExecutor(new Checkpoints());
 	ProtocolLibrary.getProtocolManager().addPacketListener(new PacketAdapter(
