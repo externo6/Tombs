@@ -48,10 +48,10 @@ public class Tomb2Essence implements Listener{
 					 if (Cooldowns.tryCooldown(player, "6", 2000)){
 					 player.sendMessage(ChatColor.BLUE + ("You can only use the Essence in the survival world."));
 				 }
-					}
-		}
+			}
 		}
 	}
+}
 	@EventHandler
 	public void onPlayerInteractChargedJumpSign(PlayerInteractEvent event)
 	{	
@@ -69,14 +69,14 @@ public class Tomb2Essence implements Listener{
 	    	  if ((player.hasPermission("tombs.essencechargedjump")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
 	    	  {
 	    		  if((player.getItemInHand().hasItemMeta())
-	    	                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-	    	                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-	    	                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
-	    	                        || ((player.getItemInHand().hasItemMeta())
-	    	                                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-	    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-	    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
-	    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+	    	          && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+	    	              || ((player.getItemInHand().hasItemMeta())
+	    	          && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 	    		  {
 		  	  	if (essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
 		  	  	{
@@ -139,14 +139,14 @@ public class Tomb2Essence implements Listener{
 	    	  if ((player.hasPermission("tombs.essencespeed")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
 	    	  {
 	    		  if((player.getItemInHand().hasItemMeta())
-	    	                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-	    	                    && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-	    	                        && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
-	    	                        || ((player.getItemInHand().hasItemMeta())
-	    	                                && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
-	    	                                  && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
-	    	                                  	&& (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
-	    	                                      && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+	    	          && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+	    	              || ((player.getItemInHand().hasItemMeta())
+	    	          && (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 	    		  {
 	  		    	if (essence.getString(player.getName()).equalsIgnoreCase("speed")){
 			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Speed");
