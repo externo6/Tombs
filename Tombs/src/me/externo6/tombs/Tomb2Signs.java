@@ -11,12 +11,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
 public class Tomb2Signs implements Listener{
+	
+	@EventHandler
+	public void onSignCreate(SignChangeEvent sign){
+		Player player = sign.getPlayer();
+		if(!player.hasPermission("tombs.placeessencesign")){
+		if(sign.getLine(0).equalsIgnoreCase("Tomb Essence"));
+		sign.setLine(0, "NO PERMISSION");
+	}
+}
 	
 	@EventHandler
 	public void onPlayerInteractTomb2Kit(PlayerInteractEvent event)

@@ -3,8 +3,6 @@ package me.externo6.tombs;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -66,17 +64,20 @@ public class Interface implements Listener{
 		inv.setItem(8, Arrow);
 		
 		player.openInventory(inv);
+		
 
 	}
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event){
+		Player player = (Player) event.getWhoClicked();
 		if(!ChatColor.stripColor(event.getInventory().getName()).equals("Tomb Essence Selector"))
 				return;
-		Player player = (Player) event.getWhoClicked();
 		event.setCancelled(true);
-		
+		if (Cooldowns.tryCooldown(player, "5", 2000))
+  		{
 		if (event.getCurrentItem()==null || event.getCurrentItem().getType()==Material.AIR || !event.getCurrentItem().hasItemMeta()){
 			//player.closeInventory();
+			player.sendMessage("Click on one of the Essence Powers");
 			return;
 		}		
 		switch(event.getCurrentItem().getType()) {
@@ -126,6 +127,7 @@ public class Interface implements Listener{
 			}
   	  	}
   	  }
+  		  
 		break;
 
 		case DIAMOND_BOOTS:
@@ -141,29 +143,36 @@ public class Interface implements Listener{
 			player.closeInventory();
 			break;
 		}
-		
+  		}
 	}
-	
-	
+
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event){
+	      Player player = event.getPlayer();
+		  if((player.getItemInHand().hasItemMeta())
+    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+    	              || ((player.getItemInHand().hasItemMeta())
+    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+		  {
 		if ((event.getAction() == Action.RIGHT_CLICK_BLOCK) || (event.getAction() == Action.LEFT_CLICK_BLOCK))
 		  {
 		    Block block = event.getClickedBlock();
 		    if (block.getType() == Material.WALL_SIGN)
 		    {
 		      Sign sign = (Sign)block.getState();
-		      Player player = event.getPlayer();
 		      if ((sign.getLine(0).equals("Tomb Essence")) 
 		    		  && (sign.getLine(1).equals("Infuser"))) 
 		      {
 		    	  openInterface(event.getPlayer());
-		      }
-		      }    
+		    }
 		    }
 		  }
-	
-	
-	
-	
+		  }
+		  }  
 }
+
