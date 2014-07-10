@@ -24,10 +24,10 @@ public class Tomb2Signs implements Listener{
 		Player player = sign.getPlayer();
 		if(sign.getLine(0).equalsIgnoreCase("Tomb Essence")){
 			if(!player.hasPermission("tombs.placeessencesign")){
-		sign.setLine(0, "NO PERMISSION");
-		sign.setLine(1, "NO PERMISSION");
-		sign.setLine(2, "NO PERMISSION");
-		sign.setLine(3, "NO PERMISSION");
+		sign.setLine(0, ChatColor.RED + "Not Permitted");
+		sign.setLine(1, "");
+		sign.setLine(2, "");
+		sign.setLine(3, "");
 			}
 		}
 }
