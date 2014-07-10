@@ -24,7 +24,7 @@ public class Interface implements Listener{
 	
 
 	public void openInterface(Player player) {
-		Inventory inv = Bukkit.createInventory(null, 9, ChatColor.GREEN + "Tomb Essence Selector");
+		Inventory inv = Bukkit.createInventory(null, 9, ChatColor.BLUE + "Tomb Essence Selector");
 		
 		ItemStack Jump = new ItemStack(Material.IRON_BOOTS);
 		ItemMeta JumpMeta = Jump.getItemMeta();
@@ -38,20 +38,40 @@ public class Interface implements Listener{
 		ItemMeta ArrowMeta = Arrow.getItemMeta();
 	//	ItemStack Spacer = new ItemStack(Material.PAPER);
 		
-		JumpMeta.setDisplayName(ChatColor.AQUA + "Jump");
-		JumpMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change to Jump"));
+		JumpMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Jump Boost");
+		JumpMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Jump Boost",
+				ChatColor.DARK_GRAY + "----------",
+				ChatColor.GRAY + "Stats:",
+				ChatColor.AQUA + "Cost: 5 Levels",
+				ChatColor.GREEN + "Cooldown: 30 Seconds"));
 		Jump.setItemMeta(JumpMeta);
-		ChargedJumpMeta.setDisplayName(ChatColor.AQUA + "Jump");
-		ChargedJumpMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change to Jump"));
+		ChargedJumpMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Charged Jump");
+		ChargedJumpMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Charged Jump",
+				ChatColor.DARK_GRAY + "----------",
+				ChatColor.GRAY + "Stats:",
+				ChatColor.AQUA + "Cost: 3 Levels",
+				ChatColor.GREEN + "Cooldown: 15 Seconds"));
 		ChargedJump.setItemMeta(ChargedJumpMeta);
-		SpeedMeta.setDisplayName(ChatColor.AQUA + "Jump");
-		SpeedMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change to Jump"));
+		SpeedMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Speed");
+		SpeedMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Speed", 
+				ChatColor.DARK_GRAY + "----------",
+				ChatColor.GRAY + "Stats:",
+				ChatColor.AQUA + "Cost: 5 Levels", 
+				ChatColor.GREEN + "Cooldown: 30 Seconds"));
 		Speed.setItemMeta(SpeedMeta);
-		InvisibilityMeta.setDisplayName(ChatColor.AQUA + "Jump");
-		InvisibilityMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change to Jump"));
+		InvisibilityMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Invisibility");
+		InvisibilityMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Invisibility",
+				ChatColor.DARK_GRAY + "----------",
+				ChatColor.GRAY + "Stats:",
+				ChatColor.AQUA + "Cost: 20 Levels",
+				ChatColor.GREEN + "Cooldown: 1 Minute"));
 		Invisibility.setItemMeta(InvisibilityMeta);
-		ArrowMeta.setDisplayName(ChatColor.AQUA + "Jump");
-		ArrowMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change to Jump"));
+		ArrowMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Arrow");
+		ArrowMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Arrow",
+				ChatColor.DARK_GRAY + "----------",
+				ChatColor.GRAY + "Stats:",
+				ChatColor.AQUA + "Cost: 4 Levels, 2 Arrows",
+				ChatColor.GREEN + "Cooldown: 2 Seconds"));
 		Arrow.setItemMeta(ArrowMeta);
 		
 		inv.setItem(0, Jump);
@@ -82,7 +102,7 @@ public class Interface implements Listener{
 			return;
 		}		
 		switch(event.getCurrentItem().getType()) {
-		case DIAMOND_BOOTS:
+		case IRON_BOOTS:
   		  if((player.getItemInHand().hasItemMeta())
     	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
     	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
@@ -93,30 +113,27 @@ public class Interface implements Listener{
     	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
     	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 		  {
-  	  	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
-  	  	{
-    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Charged Jump");
-	}
-  	  	else
-  	  	{
-  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
-  	  	{
-		Tomb2Essence.essence.set(player.getName(), "chargedjump");
+		  	  	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("jumpboost")){
+		    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump Boost");
+		    	}
+		  	  	else
+		    	{
+			  	  	Tomb2Essence.essence.set(player.getName(), "jumpboost");
 			  ItemStack hand = player.getItemInHand();
 			  ItemMeta meta = hand.getItemMeta();
 			  ArrayList<String> lore = new ArrayList<String>();
 			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
-			  lore.add(ChatColor.BLUE + "Charged Jump");
-			  lore.add(ChatColor.AQUA + "Cost: 3 Levels");
-			  lore.add(ChatColor.GREEN+ "Cooldown: 15 Seconds");
+			  lore.add(ChatColor.BLUE + "Jump Boost");
+			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
+			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
 			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 			  meta.setLore(lore);
 			  hand.setItemMeta(meta);
 			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Charged Jump");
+			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump Boost");
 	  	      try
 		        {
 	  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
@@ -125,14 +142,11 @@ public class Interface implements Listener{
 		        {
 		          e.printStackTrace();
 		        }
-			}
-  	  	}
-  	  }
-  		  
+  			}
+		    	}  
 		break;
-
-		case IRON_BOOTS:
-	  		  if((player.getItemInHand().hasItemMeta())
+		case DIAMOND_BOOTS:
+			if((player.getItemInHand().hasItemMeta())
 	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
 	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
 	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
@@ -142,40 +156,38 @@ public class Interface implements Listener{
 	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
 	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
 			  {
-			  	  	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("jumpboost")){
-			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump Boost");
-			    	}
-			  	  	else
-			    	{
-				  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
-				  	  	{
-				  	  	Tomb2Essence.essence.set(player.getName(), "jumpboost");
-  			  ItemStack hand = player.getItemInHand();
-  			  ItemMeta meta = hand.getItemMeta();
-  			  ArrayList<String> lore = new ArrayList<String>();
-  			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
-  			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
-  			  lore.add(ChatColor.BLUE + "Jump Boost");
-  			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
-  			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
-  			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
-  			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
-  			  meta.setLore(lore);
-  			  hand.setItemMeta(meta);
-  			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-  			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-  			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump Boost");
-		  	      try
-			        {
-		  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
-			        }
-			        catch (IOException e)
-			        {
-			          e.printStackTrace();
-			        }
+		  	  	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("chargedjump"))
+		  	  	{
+		    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Charged Jump");
+	    	}
+		  	  	else
+		  	  	{
+		  	  	Tomb2Essence.essence.set(player.getName(), "chargedjump");
+	    			  ItemStack hand = player.getItemInHand();
+	    			  ItemMeta meta = hand.getItemMeta();
+	    			  ArrayList<String> lore = new ArrayList<String>();
+	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
+	    			  lore.add(ChatColor.BLUE + "Charged Jump");
+	    			  lore.add(ChatColor.AQUA + "Cost: 3 Levels");
+	    			  lore.add(ChatColor.GREEN+ "Cooldown: 15 Seconds");
+	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
+	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
+	    			  meta.setLore(lore);
+	    			  hand.setItemMeta(meta);
+	    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Charged Jump");
+			  	      try
+				        {
+				          Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+				        }
+				        catch (IOException e)
+				        {
+				          e.printStackTrace();
+				        }
 	    			}
-			    	}
-			  }
+		  	  	}
 		break;
 		case POTION:
 	  		  if((player.getItemInHand().hasItemMeta())
@@ -193,8 +205,6 @@ public class Interface implements Listener{
 			    	}
 	  		    	else
 			    	{
-	  		    		if (Cooldowns.tryCooldown(player, "5", 2000))
-	  		    		{
 	  		    			Tomb2Essence.essence.set(player.getName(), "Speed");
 	    			  ItemStack hand = player.getItemInHand();
 	    			  ItemMeta meta = hand.getItemMeta();
@@ -211,17 +221,16 @@ public class Interface implements Listener{
 	    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 	    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 	    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Speed");
-			  	      try
-				        {
-			  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
-				        }
-				        catch (IOException e)
-				        {
-				          e.printStackTrace();
-			        }
-  			}
-			    	}
-			  }
+	    	  	      try
+	  		        {
+	  	  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+	  		        }
+	  		        catch (IOException e)
+	  		        {
+	  		          e.printStackTrace();
+	  		        }
+	  			}
+	    	  	}
 		break;
 		
 		
@@ -241,8 +250,6 @@ public class Interface implements Listener{
 			    	}
 			  	  	else
 			    	{
-			  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
-			  	  	{
 			  	  	Tomb2Essence.essence.set(player.getName(), "Invisibility");
   			  ItemStack hand = player.getItemInHand();
   			  ItemMeta meta = hand.getItemMeta();
@@ -259,20 +266,17 @@ public class Interface implements Listener{
   			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
   			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
   			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Invisibility");
-		  	      try
-			        {
-			          Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
-			        }
-			        catch (IOException e)
-			        {
-			          e.printStackTrace();
-			        }
-	    			}
-			    	}
+	  	      try
+		        {
+	  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+		        }
+		        catch (IOException e)
+		        {
+		          e.printStackTrace();
+		        }
+			}
 			  }
-		break;
-		
-		
+		break;	
 		case ARROW:
 	  		  if((player.getItemInHand().hasItemMeta())
 	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
@@ -289,8 +293,6 @@ public class Interface implements Listener{
 			    	}
 			  	  	else
 			    	{
-				  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
-				  	  	{
 				  	  	Tomb2Essence.essence.set(player.getName(), "Arrow");
   			  ItemStack hand = player.getItemInHand();
   			  ItemMeta meta = hand.getItemMeta();
@@ -307,25 +309,20 @@ public class Interface implements Listener{
   			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
   			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
   			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Arrow");
-		  	      try
-			        {
-			          Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
-			        }
-			        catch (IOException e)
-			        {
-			          e.printStackTrace();
-			        }
-	    			}
-			    	}
-			  }
+	  	      try
+		        {
+	  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+		        }
+		        catch (IOException e)
+		        {
+		          e.printStackTrace();
+		        }
+			}
+  	  	}
 		break;
-		
-		
 		default:
 			player.closeInventory();
-			break;
-			
-			
+			break;	
 		}
   		}
 	}
