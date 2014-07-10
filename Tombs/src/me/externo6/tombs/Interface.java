@@ -3,6 +3,7 @@ package me.externo6.tombs;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -81,7 +82,7 @@ public class Interface implements Listener{
 			return;
 		}		
 		switch(event.getCurrentItem().getType()) {
-		case IRON_BOOTS:
+		case DIAMOND_BOOTS:
   		  if((player.getItemInHand().hasItemMeta())
     	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
     	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
@@ -130,18 +131,201 @@ public class Interface implements Listener{
   		  
 		break;
 
-		case DIAMOND_BOOTS:
-			player.getInventory().contains(Material.QUARTZ);
-			player.sendMessage(ChatColor.GREEN + "Set to Charged Jump");
-			player.closeInventory();
+		case IRON_BOOTS:
+	  		  if((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+	    	              || ((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+			  {
+			  	  	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("jumpboost")){
+			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Jump Boost");
+			    	}
+			  	  	else
+			    	{
+				  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
+				  	  	{
+				  	  	Tomb2Essence.essence.set(player.getName(), "jumpboost");
+  			  ItemStack hand = player.getItemInHand();
+  			  ItemMeta meta = hand.getItemMeta();
+  			  ArrayList<String> lore = new ArrayList<String>();
+  			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+  			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
+  			  lore.add(ChatColor.BLUE + "Jump Boost");
+  			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
+  			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
+  			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
+  			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
+  			  meta.setLore(lore);
+  			  hand.setItemMeta(meta);
+  			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump Boost");
+		  	      try
+			        {
+		  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+			        }
+			        catch (IOException e)
+			        {
+			          e.printStackTrace();
+			        }
+	    			}
+			    	}
+			  }
 		break;
 		case POTION:
-			player.sendMessage(ChatColor.GREEN + "Set to Speed");
-			player.closeInventory();
+	  		  if((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+	    	              || ((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+			  {
+	  		    	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("speed")){
+			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Speed");
+			    	}
+	  		    	else
+			    	{
+	  		    		if (Cooldowns.tryCooldown(player, "5", 2000))
+	  		    		{
+	  		    			Tomb2Essence.essence.set(player.getName(), "Speed");
+	    			  ItemStack hand = player.getItemInHand();
+	    			  ItemMeta meta = hand.getItemMeta();
+	    			  ArrayList<String> lore = new ArrayList<String>();
+	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
+	    			  lore.add(ChatColor.BLUE + "Speed");
+	    			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
+	    			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
+	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
+	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
+	    			  meta.setLore(lore);
+	    			  hand.setItemMeta(meta);
+	    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Speed");
+			  	      try
+				        {
+			  	    	Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+				        }
+				        catch (IOException e)
+				        {
+				          e.printStackTrace();
+			        }
+  			}
+			    	}
+			  }
 		break;
+		
+		
+		case CHAINMAIL_CHESTPLATE:
+	  		  if((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+	    	              || ((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+			  {
+			  	  	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("invisibility")){
+			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Invisibility");
+			    	}
+			  	  	else
+			    	{
+			  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
+			  	  	{
+			  	  	Tomb2Essence.essence.set(player.getName(), "Invisibility");
+  			  ItemStack hand = player.getItemInHand();
+  			  ItemMeta meta = hand.getItemMeta();
+  			  ArrayList<String> lore = new ArrayList<String>();
+  			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+  			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
+  			  lore.add(ChatColor.BLUE + "Invisibility");
+  			  lore.add(ChatColor.AQUA + "Cost: 20 Levels");
+  			  lore.add(ChatColor.GREEN+ "Cooldown: 1 Minute");
+  			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
+  			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
+  			  meta.setLore(lore);
+  			  hand.setItemMeta(meta);
+  			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Invisibility");
+		  	      try
+			        {
+			          Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+			        }
+			        catch (IOException e)
+			        {
+			          e.printStackTrace();
+			        }
+	    			}
+			    	}
+			  }
+		break;
+		
+		
+		case ARROW:
+	  		  if((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Uninfused Tomb Essence"))
+	    	              || ((player.getItemInHand().hasItemMeta())
+	    	          && (player.getItemInHand().getType().equals(Material.QUARTZ))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Banxsi.com Official Event"))
+	    	          && (player.getItemInHand().getItemMeta().getLore().contains(ChatColor.GRAY + "Bound to: " + player.getName()))
+	    	          && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))))
+			  {
+			  	  	if (Tomb2Essence.essence.getString(player.getName()).equalsIgnoreCase("arrow")){
+			    		player.sendMessage(ChatColor.RED + "Your Essence is already set to Arrow");
+			    	}
+			  	  	else
+			    	{
+				  	  	if (Cooldowns.tryCooldown(player, "5", 2000))
+				  	  	{
+				  	  	Tomb2Essence.essence.set(player.getName(), "Arrow");
+  			  ItemStack hand = player.getItemInHand();
+  			  ItemMeta meta = hand.getItemMeta();
+  			  ArrayList<String> lore = new ArrayList<String>();
+  			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
+  			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
+  			  lore.add(ChatColor.BLUE + "Arrow");
+  			  lore.add(ChatColor.AQUA + "Cost: 4 Levels, 2 Arrows");
+  			  lore.add(ChatColor.GREEN+ "Cooldown: 2 Seconds");
+  			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
+  			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
+  			  meta.setLore(lore);
+  			  hand.setItemMeta(meta);
+  			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Arrow");
+		  	      try
+			        {
+			          Tomb2Essence.essence.save(Tomb2Essence.essenceFile);
+			        }
+			        catch (IOException e)
+			        {
+			          e.printStackTrace();
+			        }
+	    			}
+			    	}
+			  }
+		break;
+		
+		
 		default:
 			player.closeInventory();
 			break;
+			
+			
 		}
   		}
 	}
