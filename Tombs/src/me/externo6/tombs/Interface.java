@@ -347,7 +347,7 @@ public class Interface implements Listener{
 		    {
 		      Sign sign = (Sign)block.getState();
 		      if ((sign.getLine(0).equals("Tomb Essence")) 
-		    		  && (sign.getLine(1).equals("Infuser"))) 
+		    		  && (sign.getLine(1).equals(ChatColor.DARK_BLUE + "Infuser"))) 
 		      {
 		    	  openInterface(event.getPlayer());
 		    }
