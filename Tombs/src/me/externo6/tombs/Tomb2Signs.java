@@ -22,10 +22,14 @@ public class Tomb2Signs implements Listener{
 	@EventHandler
 	public void onSignCreate(SignChangeEvent sign){
 		Player player = sign.getPlayer();
-		if(!player.hasPermission("tombs.placeessencesign")){
-		if(sign.getLine(0).equalsIgnoreCase("Tomb Essence"));
+		if(sign.getLine(0).equalsIgnoreCase("Tomb Essence")){
+			if(!player.hasPermission("tombs.placeessencesign")){
 		sign.setLine(0, "NO PERMISSION");
-	}
+		sign.setLine(1, "NO PERMISSION");
+		sign.setLine(2, "NO PERMISSION");
+		sign.setLine(3, "NO PERMISSION");
+			}
+		}
 }
 	
 	@EventHandler
