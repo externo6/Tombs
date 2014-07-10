@@ -1,6 +1,6 @@
 name: Tombs
 main: me.externo6.tombs.Tombs
-authors: externo6
+authers: externo6
 version: 3.3.0
 depend: [ProtocolLib]
 description: >
