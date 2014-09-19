@@ -231,7 +231,7 @@ public class Tomb2Essence implements Listener{
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Invisibility");
-	    			  lore.add(ChatColor.AQUA + "Cost: 20 Levels");
+	    			  lore.add(ChatColor.AQUA + "Cost: 15 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 1 Minute");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -597,7 +597,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
                 {
                     if (Cooldowns.tryCooldown(player, "3", 80000))
                     {
-                        player.setLevel(player.getLevel() - 20);
+                        player.setLevel(player.getLevel() - 15);
                         player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 20 Experience Levels used. Invisibility Given.");
                             player.getWorld().playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
                             ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
