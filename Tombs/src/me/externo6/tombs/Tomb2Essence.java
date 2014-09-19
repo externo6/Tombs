@@ -93,7 +93,7 @@ public class Tomb2Essence implements Listener{
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Charged Jump");
-	    			  lore.add(ChatColor.AQUA + "Cost: 3 Levels");
+	    			  lore.add(ChatColor.AQUA + "Cost: 1 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 15 Seconds");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -465,7 +465,7 @@ public class Tomb2Essence implements Listener{
                   {
                       if (Cooldowns.tryCooldown(player, "3", 23000))
                       {
-                          player.setLevel(player.getLevel() - 3);
+                          player.setLevel(player.getLevel() - 1);
                           player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 3 Experience Levels used. Charging...");
                               player.getWorld().playSound(player.getLocation(), Sound.PORTAL_TRIGGER, 1, 1);
                               ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
