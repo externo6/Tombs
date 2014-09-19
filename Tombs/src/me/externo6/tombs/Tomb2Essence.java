@@ -300,7 +300,7 @@ public class Tomb2Essence implements Listener{
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Arrow");
-	    			  lore.add(ChatColor.AQUA + "Cost: 4 Levels, 2 Arrows");
+	    			  lore.add(ChatColor.AQUA + "Cost: 2 Arrows");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 2 Seconds");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -665,7 +665,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
                 {
                     if (Cooldowns.tryCooldown(player, "3", 2000))
                     {
-                        player.setLevel(player.getLevel() - 4);
+                        //player.setLevel(player.getLevel() - 4);
                         player.getInventory().removeItem(new ItemStack(Material.ARROW, 2));
                         player.updateInventory();
                         player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 4 Experience Levels used. 1 Critical and 1 Fire Arrow shot");
