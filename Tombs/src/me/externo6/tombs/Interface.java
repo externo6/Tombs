@@ -42,35 +42,35 @@ public class Interface implements Listener{
 		JumpMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Jump Boost",
 				ChatColor.DARK_GRAY + "----------",
 				ChatColor.GRAY + "Stats:",
-				ChatColor.AQUA + "Cost: 5 Levels",
+				ChatColor.AQUA + "Cost: 2 Levels",
 				ChatColor.GREEN + "Cooldown: 30 Seconds"));
 		Jump.setItemMeta(JumpMeta);
 		ChargedJumpMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Charged Jump");
 		ChargedJumpMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Charged Jump",
 				ChatColor.DARK_GRAY + "----------",
 				ChatColor.GRAY + "Stats:",
-				ChatColor.AQUA + "Cost: 3 Levels",
+				ChatColor.AQUA + "Cost: 1 Levels",
 				ChatColor.GREEN + "Cooldown: 15 Seconds"));
 		ChargedJump.setItemMeta(ChargedJumpMeta);
 		SpeedMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Speed");
 		SpeedMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Speed", 
 				ChatColor.DARK_GRAY + "----------",
 				ChatColor.GRAY + "Stats:",
-				ChatColor.AQUA + "Cost: 5 Levels", 
+				ChatColor.AQUA + "Cost: 2 Levels", 
 				ChatColor.GREEN + "Cooldown: 30 Seconds"));
 		Speed.setItemMeta(SpeedMeta);
 		InvisibilityMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Invisibility");
 		InvisibilityMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Invisibility",
 				ChatColor.DARK_GRAY + "----------",
 				ChatColor.GRAY + "Stats:",
-				ChatColor.AQUA + "Cost: 20 Levels",
+				ChatColor.AQUA + "Cost: 15 Levels",
 				ChatColor.GREEN + "Cooldown: 1 Minute"));
 		Invisibility.setItemMeta(InvisibilityMeta);
 		ArrowMeta.setDisplayName(ChatColor.AQUA + "Essence Power: " + ChatColor.GREEN + "Arrow");
 		ArrowMeta.setLore(Arrays.asList (ChatColor.BLUE + "Click to change your essence to: " + ChatColor.GREEN + "Arrow",
 				ChatColor.DARK_GRAY + "----------",
 				ChatColor.GRAY + "Stats:",
-				ChatColor.AQUA + "Cost: 4 Levels, 2 Arrows",
+				ChatColor.AQUA + "Cost: 2 Arrows",
 				ChatColor.GREEN + "Cooldown: 2 Seconds"));
 		Arrow.setItemMeta(ArrowMeta);
 		

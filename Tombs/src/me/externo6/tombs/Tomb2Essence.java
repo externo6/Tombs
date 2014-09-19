@@ -461,7 +461,7 @@ public class Tomb2Essence implements Listener{
                       && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence")))
                      && (essence.getString(player.getName()).equalsIgnoreCase("chargedjump")))
           {         	  
-                  if(player.getLevel()>=3)
+                  if(player.getLevel()>=1)
                   {
                       if (Cooldowns.tryCooldown(player, "3", 23000))
                       {
@@ -527,7 +527,7 @@ public void onPlayerInteractEssenceSpeed(PlayerInteractEvent event)
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
                     && (essence.getString(player.getName()).equalsIgnoreCase("speed")))
         {
-                if(player.getLevel()>=5)
+                if(player.getLevel()>=2)
                 {
                     if (Cooldowns.tryCooldown(player, "3", 45000))
                     {
@@ -593,7 +593,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
                     	&& (essence.getString(player.getName()).equalsIgnoreCase("Invisibility")))
         {
-                if(player.getLevel()>=20)
+                if(player.getLevel()>=15)
                 {
                     if (Cooldowns.tryCooldown(player, "3", 80000))
                     {
@@ -661,7 +661,7 @@ public void onPlayerInteractEssenceArrow(PlayerInteractEvent event)
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
                     	&& (essence.getString(player.getName()).equalsIgnoreCase("Arrow")))
         {
-                if((player.getLevel()>=4) && (player.getInventory().contains(Material.ARROW, 2)))
+                if(player.getInventory().contains(Material.ARROW, 2))
                 {
                     if (Cooldowns.tryCooldown(player, "3", 2000))
                     {
@@ -728,7 +728,7 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
                     && (player.getItemInHand().getItemMeta().getDisplayName().contentEquals(ChatColor.GOLD + "Tomb Essence"))
                     	&& (essence.getString(player.getName()).equalsIgnoreCase("jumpboost")))
         {
-                if(player.getLevel()>=5)
+                if(player.getLevel()>=2)
                 {
                     if (Cooldowns.tryCooldown(player, "3", 45000))
                     {
