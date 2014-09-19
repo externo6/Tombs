@@ -369,7 +369,7 @@ public class Tomb2Essence implements Listener{
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Jump Boost");
-	    			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
+	    			  lore.add(ChatColor.AQUA + "Cost: 2 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -732,7 +732,7 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
                 {
                     if (Cooldowns.tryCooldown(player, "3", 45000))
                     {
-                        player.setLevel(player.getLevel() - 5);
+                        player.setLevel(player.getLevel() - 2);
                         player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Jump Boost Given.");
                         player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 2));
                         ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
