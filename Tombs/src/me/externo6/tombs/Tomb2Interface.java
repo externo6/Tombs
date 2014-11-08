@@ -20,7 +20,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class Interface implements Listener{
+public class Tomb2Interface implements Listener{
 	
 
 	public void openInterface(Player player) {
@@ -75,13 +75,9 @@ public class Interface implements Listener{
 		Arrow.setItemMeta(ArrowMeta);
 		
 		inv.setItem(0, Jump);
-	//	inv.setItem(1, Spacer);
 		inv.setItem(2, ChargedJump);
-	//	inv.setItem(3, Spacer);
 		inv.setItem(4, Speed);
-	//	inv.setItem(5, Spacer);
 		inv.setItem(6, Invisibility);
-	//	inv.setItem(7, Spacer);
 		inv.setItem(8, Arrow);
 		
 		player.openInventory(inv);
