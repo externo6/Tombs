@@ -121,7 +121,7 @@ public class Tomb2Interface implements Listener{
 			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 			  lore.add(ChatColor.BLUE + "Jump Boost");
-			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
+			  lore.add(ChatColor.AQUA + "Cost: 2 Levels");
 			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
 			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -165,7 +165,7 @@ public class Tomb2Interface implements Listener{
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Charged Jump");
-	    			  lore.add(ChatColor.AQUA + "Cost: 3 Levels");
+	    			  lore.add(ChatColor.AQUA + "Cost: 1 Level");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 15 Seconds");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -208,7 +208,7 @@ public class Tomb2Interface implements Listener{
 	    			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
 	    			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
 	    			  lore.add(ChatColor.BLUE + "Speed");
-	    			  lore.add(ChatColor.AQUA + "Cost: 5 Levels");
+	    			  lore.add(ChatColor.AQUA + "Cost: 2 Levels");
 	    			  lore.add(ChatColor.GREEN+ "Cooldown: 30 Seconds");
 	    			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -253,7 +253,7 @@ public class Tomb2Interface implements Listener{
   			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
   			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
   			  lore.add(ChatColor.BLUE + "Invisibility");
-  			  lore.add(ChatColor.AQUA + "Cost: 20 Levels");
+  			  lore.add(ChatColor.AQUA + "Cost: 15 Levels");
   			  lore.add(ChatColor.GREEN+ "Cooldown: 1 Minute");
   			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
   			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
@@ -296,7 +296,7 @@ public class Tomb2Interface implements Listener{
   			  meta.setDisplayName(ChatColor.GOLD + "Tomb Essence");
   			  meta.addEnchant(Enchantment.DURABILITY, 100, true);
   			  lore.add(ChatColor.BLUE + "Arrow");
-  			  lore.add(ChatColor.AQUA + "Cost: 4 Levels, 2 Arrows");
+  			  lore.add(ChatColor.AQUA + "Cost: 2 Arrows");
   			  lore.add(ChatColor.GREEN+ "Cooldown: 2 Seconds");
   			  lore.add(ChatColor.GRAY + "Bound to: " + player.getName());
   			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
