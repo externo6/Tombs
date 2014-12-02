@@ -96,7 +96,7 @@ public class Tomb2Signs implements Listener{
 	    {
 	      Sign sign = (Sign)block.getState();
 	      Player player = event.getPlayer();
-	      if ((sign.getLine(0).equals("[]")) 
+	      if ((sign.getLine(0).equals("^")) 
 	    		  && (sign.getLine(1).equals("<>")) 
 	    		  	&& (sign.getLine(2).equals(":")) 
 	    		  		&& (sign.getLine(3).equals("-")))
