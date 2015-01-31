@@ -127,8 +127,8 @@ public class Tomb2Interface implements Listener{
 			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 			  meta.setLore(lore);
 			  hand.setItemMeta(meta);
-			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+		//	  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+		//	  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Jump Boost");
 	  	      try
 		        {
@@ -171,8 +171,8 @@ public class Tomb2Interface implements Listener{
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 	    			  meta.setLore(lore);
 	    			  hand.setItemMeta(meta);
-	    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-	    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    	//		  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    	//		  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 	    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Charged Jump");
 			  	      try
 				        {
@@ -214,8 +214,8 @@ public class Tomb2Interface implements Listener{
 	    			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
 	    			  meta.setLore(lore);
 	    			  hand.setItemMeta(meta);
-	    			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-	    			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    		//	  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+	    		//	  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
 	    			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Speed");
 	    	  	      try
 	  		        {
@@ -259,8 +259,8 @@ public class Tomb2Interface implements Listener{
   			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
   			  meta.setLore(lore);
   			  hand.setItemMeta(meta);
-  			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-  			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  		//	  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  		//	  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
   			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Invisibility");
 	  	      try
 		        {
@@ -302,8 +302,8 @@ public class Tomb2Interface implements Listener{
   			  lore.add(ChatColor.DARK_GRAY + "Banxsi.com Official Event");
   			  meta.setLore(lore);
   			  hand.setItemMeta(meta);
-  			  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
-  			  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  		//	  ParticleEffect.PORTAL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
+  		//	  ParticleEffect.ENCHANTMENT_TABLE.display(player.getLocation().add(0.0, 2.0, 0.0), 0.0F, 0.0F, 0.0F, 1.0F, 25);
   			  player.sendMessage(ChatColor.GREEN + "Essence changed to: " + ChatColor.AQUA + "Arrow");
 	  	      try
 		        {
@@ -346,10 +346,10 @@ public class Tomb2Interface implements Listener{
 		    		  && (sign.getLine(1).equals(ChatColor.DARK_BLUE + "Infuser"))) 
 		      {
 		    	  openInterface(event.getPlayer());
-		    }
+		      }
 		    }
 		  }
-		  }
-		  }  
+	  }
+  }  
 }
 

@@ -7,6 +7,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Sound;
+import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -142,7 +144,7 @@ public static void tomb2powerupjump (final Player player)
               //Location loc = player.getLocation();
               player.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "Me" + ChatColor.GOLD + "]" + ChatColor.WHITE + ":" + ChatColor.GREEN + " Woah!");
                 player.setVelocity(new Vector(0,1.50,0));   
-                player.getWorld().playEffect(player.getLocation(), Effect.EXPLOSION_LARGE, 0);
+                player.getWorld().playEffect(player.getLocation(), Effect.SMOKE, 0);
                 player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
           }
     }, 90L);
@@ -155,5 +157,137 @@ public static void arrowfire2 (final Player player)
         	  player.launchProjectile(Arrow.class).setFireTicks(300);
           }
     }, 6L);
+    }
+public static void tomb3keystrike1 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	  player.setHealth(20);
+        	  player.playEffect(player.getLocation(), Effect.SMOKE, 1);
+        	  player.getWorld().strikeLightning(player.getLocation());
+        	  player.playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+          }
+    }, 6L);
+    }
+public static void tomb3keystrike2 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	  player.setHealth(20);
+        	  player.playEffect(player.getLocation(), Effect.SMOKE, 2);
+        	  player.getWorld().strikeLightning(player.getLocation());
+        	  player.playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+          }
+    }, 12L);
+    }
+public static void tomb3keystrike3 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	  player.setHealth(20);
+        	  player.playEffect(player.getLocation(), Effect.SMOKE, 3);
+        	  player.getWorld().strikeLightning(player.getLocation());
+        	  player.playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+          }
+    }, 18L);
+    }
+public static void tomb3keystrike4 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	  player.setHealth(20);
+        	  player.playEffect(player.getLocation(), Effect.SMOKE, 1);
+        	  player.getWorld().strikeLightning(player.getLocation());
+        	  player.playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+          }
+    }, 24L);
+    }
+public static void tomb3keystrike5 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	  player.setHealth(20);
+        	  player.playEffect(player.getLocation(), Effect.SMOKE, 2);
+        	  player.getWorld().strikeLightning(player.getLocation());
+        	  player.playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+          }
+    }, 30L);
+    }
+public static void tomb3keystrike6 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	  player.setHealth(20);
+        	  player.playEffect(player.getLocation(), Effect.SMOKE, 3);
+        	  player.getWorld().strikeLightning(player.getLocation());
+        	  player.playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+          }
+    }, 36L);
+    }
+public static void tombessencelightning1 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	World world = player.getWorld();
+        	Block targetblock = player.getTargetBlock(null, 50);
+            Location location = targetblock.getLocation();
+            world.strikeLightning(location);
+          }
+    }, 3L);
+    }
+public static void tombessencelightning2 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	World world = player.getWorld();
+        	Block targetblock = player.getTargetBlock(null, 50);
+            Location location = targetblock.getLocation();
+            world.strikeLightning(location);
+          }
+    }, 6L);
+    }
+public static void tombessencelightning3 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	World world = player.getWorld();
+        	Block targetblock = player.getTargetBlock(null, 50);
+            Location location = targetblock.getLocation();
+            world.strikeLightning(location);
+          }
+    }, 9L);
+    }
+public static void tombessencelightning4 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	World world = player.getWorld();
+        	Block targetblock = player.getTargetBlock(null, 50);
+            Location location = targetblock.getLocation();
+            world.strikeLightning(location);
+          }
+    }, 12L);
+    }
+public static void tombessencelightning5 (final Player player)
+{
+    Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() 
+    {
+          public void run() {
+        	World world = player.getWorld();
+        	Block targetblock = player.getTargetBlock(null, 50);
+            Location location = targetblock.getLocation();
+            world.strikeLightning(location);
+          }
+    }, 15L);
     }
 }

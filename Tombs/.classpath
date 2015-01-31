@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/Minecraft Stuff/New folder/spigot.jar"/>
-	<classpathentry kind="lib" path="D:/Minecraft Stuff/New folder/plugins/ProtocolLib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Joe/.m2/repository/org/bukkit/bukkit/1.8-R0.1-SNAPSHOT/bukkit-1.8-R0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Joe/.m2/repository/com/comphenix/protocol/ProtocolLib/3.4.0/ProtocolLib-3.4.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
