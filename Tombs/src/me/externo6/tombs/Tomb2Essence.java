@@ -1,8 +1,6 @@
 package me.externo6.tombs;
 
 import java.io.File;
-import java.util.Arrays;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Material;
@@ -16,10 +14,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-//import me.externo6.tombs.ParticleEffect;
 
 public class Tomb2Essence implements Listener{
 	static File essenceFile = new File("./plugins/Tombs", "Essence.yml");
