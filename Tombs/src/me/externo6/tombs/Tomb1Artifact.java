@@ -1,5 +1,7 @@
 package me.externo6.tombs;
 
+import java.util.Arrays;
+
 import me.externo6.tombs.Cooldowns;
 
 import org.bukkit.ChatColor;
@@ -11,6 +13,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
@@ -36,11 +40,17 @@ public class Tomb1Artifact implements Listener{
 	  @EventHandler
 		public void onPlayerInteractTombArtifact(PlayerInteractEvent event)
 	  {
+		    String[] artifactlore = {ChatColor.DARK_GRAY + "Banxsi.com Official Event"};
+			ItemStack artifact = new ItemStack(Material.QUARTZ, 1);
+			ItemMeta artifactmeta = artifact.getItemMeta();
+			artifactmeta.setLore(Arrays.asList(artifactlore));
+			artifactmeta.setDisplayName(ChatColor.GOLD + "Tomb Artifact");
+			artifact.setItemMeta(artifactmeta);
 			Player player = event.getPlayer();
 			Location loc = player.getLocation();
 			if((event.getAction()==Action.RIGHT_CLICK_AIR) || event.getAction()==Action.RIGHT_CLICK_BLOCK)
 			{
-			if(player.getWorld().getName().equalsIgnoreCase("1point7"))
+			if(player.getWorld().getName().equalsIgnoreCase("1point8"))
 			{
 			if((player.getItemInHand().hasItemMeta()) //Check if ItemMeta is present, this stops nullpointerexeptions on normal Quartz
 				&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
@@ -81,6 +91,15 @@ public class Tomb1Artifact implements Listener{
 				Tombs.blindness(player);
 				Tombs.delay(player);
 				Tombs.ouch(player);
+				}
+			}else
+			{
+				if((player.getItemInHand().hasItemMeta())
+						&& (event.getPlayer().getItemInHand().getType().equals(Material.QUARTZ)) 
+							&& (player.getItemInHand().getItemMeta().getLore().contains("?8Banxsi.com Official Event")) 
+								&& (player.getItemInHand().getItemMeta().getDisplayName().contentEquals("?6Tomb Artifact")))
+				{
+					player.setItemInHand(artifact);
 				}
 			}
 		}

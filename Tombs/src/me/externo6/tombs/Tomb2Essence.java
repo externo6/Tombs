@@ -177,7 +177,7 @@ public void onPlayerInteractEssenceSpeed(PlayerInteractEvent event)
                     if (Cooldowns.tryCooldown(player, "3", 45000))
                     {
                         player.setLevel(player.getLevel() - 2);
-                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Speed Given.");
+                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 2 Experience Levels used. Speed Given.");
                             player.getWorld().playSound(player.getLocation(), Sound.HORSE_GALLOP, 1, 1);
                          //   ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                             player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 2));
@@ -241,7 +241,7 @@ public void onPlayerInteractEssenceInvisibility(PlayerInteractEvent event)
                     if (Cooldowns.tryCooldown(player, "3", 80000))
                     {
                         player.setLevel(player.getLevel() - 15);
-                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 20 Experience Levels used. Invisibility Given.");
+                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 15 Experience Levels used. Invisibility Given.");
                             player.getWorld().playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
                           //  ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                             player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 400, 1));
@@ -373,7 +373,7 @@ public void onPlayerInteractJumpBoost(PlayerInteractEvent event)
                     if (Cooldowns.tryCooldown(player, "3", 45000))
                     {
                         player.setLevel(player.getLevel() - 2);
-                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 5 Experience Levels used. Jump Boost Given.");
+                        player.sendMessage(ChatColor.GOLD + "Tomb Essence" + ChatColor.WHITE + ":" + ChatColor.GREEN + " 2 Experience Levels used. Jump Boost Given.");
                         player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 2));
                    //     ParticleEffect.SPELL.display(player.getLocation().add(0.0, 1.0, 0.0), 0.5F, 0.5F, 0.5F, 1.0F, 25);
                   }
