@@ -38,7 +38,7 @@ public class Tomb2Signs implements Listener{
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK)
 		{
 			Block block = event.getClickedBlock();
-			if (block.getType() == Material.WALL_SIGN)
+			if ((block.getType() == Material.WALL_SIGN) || (block.getType() == Material.SIGN_POST))
 			{
 				Sign sign = (Sign)block.getState();
 				Player player = event.getPlayer();
@@ -47,6 +47,9 @@ public class Tomb2Signs implements Listener{
 				ItemMeta meta = sword.getItemMeta();
 				meta.setLore(Arrays.asList(lores));
 				sword.setItemMeta(meta);
+				ItemStack torch = new ItemStack(Material.TORCH, 1);
+				ItemMeta metatorch = sword.getItemMeta();
+				metatorch.setDisplayName(ChatColor.YELLOW + "Torch of Light");
 				if ((sign.getLine(0).equals(ChatColor.DARK_BLUE + "Tomb")) && (sign.getLine(1).equals("Armour")))
 					if ((player.hasPermission("tombs.armour")) && (player.getWorld().getName().equalsIgnoreCase("dun1"))) 
 					{
@@ -55,7 +58,8 @@ public class Tomb2Signs implements Listener{
 						player.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE, 1));
 						player.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS, 1));
 						player.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS, 1));
-						player.getInventory().setItemInHand(sword);
+						player.getInventory().setItemInHand(torch);
+						player.getInventory().addItem(sword);
 					}
 			}
 		}
